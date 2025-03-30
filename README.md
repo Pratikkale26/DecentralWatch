@@ -1,84 +1,41 @@
-# Turborepo starter
+# 🌐 DecentralWatch
 
-This Turborepo starter is maintained by the Turborepo core team.
+DecentralWatch is a **decentralized uptime monitoring platform** where validators across the globe report website uptime and get incentivized for their contributions. Say goodbye to centralized monitoring failures - DecentralWatch ensures a **trustless, transparent, and community-driven** approach to website reliability.
 
-## Using this example
+## 🚀 Features
 
-Run the following command:
+- **Decentralized Uptime Monitoring** – Validators verify website status from different locations.
+- **Incentivized Network** – Participants earn rewards for accurate uptime reports.
+- **Real-Time Insights** – Get instant alerts and analytics on website uptime.
+- **Trustless & Transparent** – No central authority; all data is verifiable.
+- **Dark/Light Mode** – Sleek and professional UI with interactive elements.
 
-```sh
-npx create-turbo@latest
-```
+## 🎯 How It Works
 
-## What's inside?
+1. **Run a Validator** – Users can set up a validator node to monitor websites.
+2. **Report Uptime** – Validators continuously check website availability.
+3. **Earn Rewards** – Get incentivized for honest and accurate reporting.
+4. **View Analytics** – Website owners get real-time insights and alerts.
 
-This Turborepo includes the following packages/apps:
+## 📸 Screenshots
 
-### Apps and Packages
+![Landing Page Preview](./preview.png)
+<!-- ![Landing Page Preview](./preview.png) -->
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## 🛠️ Tech Stack
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- **Frontend:** Next.js, TypeScript, Tailwind CSS
+- **Backend:** Node.js, Express, PostgreSQL
+- **Blockchain:** Solana
+- **Storage:** IPFS / Decentralized Databases
+- **Real-Time:** WebSockets
 
-### Utilities
+## 📬 Stay Connected
 
-This Turborepo has some additional tools already setup for you:
+- Website: [kalehub.com](https://decentralwatch.kalehub.com)
+- Twitter: [@PratikKale26](https://x.com/pratikkale26)
+- LinkedIn: [Pratik Kale](https://www.linkedin.com/in/pratikkale26/)
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+---
 
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+**Empowering the Internet with Decentralization. Monitor. Validate. Earn.**
