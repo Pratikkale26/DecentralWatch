@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Shield, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -23,6 +24,7 @@ const NavLinks = ({ onClick }: { onClick?: () => void }) => (
 )
 
 export function Header() {
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -45,17 +47,22 @@ export function Header() {
             <Shield className="h-6 w-6 text-primary" />
             <span className="inline-block font-bold">DecentralWatch</span>
           </Link>
-          <nav className="hidden gap-6 md:flex">
-            <NavLinks />
-          </nav>
+          {/* Hide navigation links on pages other than "/" */}
+          {pathname === "/" && (
+            <nav className="hidden gap-6 md:flex">
+              <NavLinks />
+            </nav>
+          )}
         </div>
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
           <ThemeToggle />
-          <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link href="#join">Join as Validator</Link>
-          </Button>
+          {pathname === "/" && (
+            <Button asChild size="sm" className="hidden sm:inline-flex">
+              <Link href="#join">Join as Validator</Link>
+            </Button>
+          )}
           <SignedOut>
             <SignInButton />
             <SignUpButton />
@@ -70,7 +77,7 @@ export function Header() {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
+      {isMobileMenuOpen && pathname === "/" && (
         <div className="md:hidden">
           <div className="container py-4 space-y-4">
             <nav className="flex flex-col space-y-4">

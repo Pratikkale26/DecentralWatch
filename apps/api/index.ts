@@ -2,9 +2,12 @@ import express from "express";
 import { authMiddleware } from "./middleware";
 import { prismaClient } from "db/client";
 import { id } from "ethers";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
 
 // create website
 app.post("/api/v1/website", authMiddleware, async (req, res) => {
@@ -43,18 +46,21 @@ app.get("/api/v1/website/status", authMiddleware, async (req, res) => {
 });
 
 // get all websites
-app.get("/api/v1/website", authMiddleware, async (req, res) => {
+app.get("/api/v1/websites", authMiddleware, async (req, res) => {
     const userId = req.userId;
 
-    const websitesData = await prismaClient.website.findMany({
+    const websites = await prismaClient.website.findMany({
         where:{
             userId: userId,
             disabled: false
+        },
+        include:{
+            websiteTicks: true
         }
     })
 
     res.json({
-        websitesData
+        websites
     })
 });
 
@@ -80,6 +86,6 @@ app.delete("/api/v1/website/:websiteId", authMiddleware, async (req, res) => {
 
 
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(8080, () => {
+  console.log("Server is running on port 8080");
 });
