@@ -1,7 +1,6 @@
 import express from "express";
 import { authMiddleware } from "./middleware";
 import { prismaClient } from "db/client";
-import { id } from "ethers";
 import cors from "cors";
 
 const app = express();

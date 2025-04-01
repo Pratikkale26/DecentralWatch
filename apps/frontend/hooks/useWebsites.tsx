@@ -5,11 +5,16 @@ import axios from "axios";
 import { API_BACKEND_URL } from "@/config";
 
 interface Website {
-    id: number;
+    id: string;
     url: string;
-    ticks: {
+    userId: string;
+    disabled: boolean;
+    websiteTicks: {
         id: string;
+        websiteId: string;
+        validatorId: string;
         createdAt: string;
+        updatedAt: string;
         status: string;
         latency: number;
     }[];
@@ -24,7 +29,7 @@ export function useWebsites() {
 
         const res = await axios.get(`${API_BACKEND_URL}/api/v1/websites`, {
             headers: {
-                Authorization: token, 
+                Authorization: `Bearer ${token}`, 
             }
         })
         
@@ -41,5 +46,5 @@ export function useWebsites() {
         return () => clearInterval(interval);
     }, [])
 
-    return websites;
+    return {websites, refreshWebsites};
 }
