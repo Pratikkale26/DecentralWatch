@@ -3,6 +3,7 @@ import type { OutgoingMessage, SignupOutgoingMessage, ValidateOutgoingMessage } 
 import { Keypair } from "@solana/web3.js";
 import nacl from "tweetnacl";
 import nacl_util from "tweetnacl-util";
+import 'dotenv/config';
 
 const CALLBACKS: {[callbackId: string]: (data: SignupOutgoingMessage) => void} = {}
 
@@ -60,7 +61,7 @@ async function validateHandler(ws: WebSocket, { url, callbackId, websiteId }: Va
             type: 'validate',
             data: {
                 callbackId,
-                status: status === 200 ? 'Good' : 'Bad',
+                status: status === 200 ? 'UP' : 'DOWN',
                 latency,
                 websiteId,
                 validatorId,
@@ -72,7 +73,7 @@ async function validateHandler(ws: WebSocket, { url, callbackId, websiteId }: Va
             type: 'validate',
             data: {
                 callbackId,
-                status:'Bad',
+                status: 'DOWN',
                 latency: 1000,
                 websiteId,
                 validatorId,

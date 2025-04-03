@@ -8,7 +8,7 @@ export interface SignupIncomingMessage {
 export interface ValidateIncomingMessage {
     callbackId: string;
     signedMessage: string;
-    status: 'Good' | 'Bad';
+    status: 'UP' | 'DOWN';
     latency: number;
     websiteId: string;
     validatorId: string;
