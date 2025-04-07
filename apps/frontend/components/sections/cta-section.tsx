@@ -39,7 +39,7 @@ export function CtaSection() {
             </h2>
             <p className="text-muted-foreground max-w-md">
               Whether you need reliable monitoring for your websites or want to earn rewards as a validator,
-              DecentralWatch has you covered.
+              Uptora has you covered.
             </p>
           </div>
 
@@ -83,7 +83,7 @@ export function CtaSection() {
                   </div>
                   <h3 className="text-xl font-bold">Application Submitted!</h3>
                   <p className="text-muted-foreground">
-                    Thank you for your interest in joining our network. We'll be in touch shortly.
+                    Thank you for your interest in joining our network. We will be in touch shortly.
                   </p>
                   <Button variant="outline" className="mt-4" onClick={resetForm}>
                     Submit Another Application
@@ -94,7 +94,7 @@ export function CtaSection() {
                   <div className="space-y-2">
                     <h3 className="text-xl font-medium">Become a Validator</h3>
                     <p className="text-sm text-muted-foreground">
-                      Fill out this form and we'll get you set up right away.
+                      Fill out this form and we will get you set up right away.
                     </p>
                   </div>
                   <div className="grid gap-4">
@@ -150,7 +150,7 @@ export function CtaSection() {
                   </div>
                   <h3 className="text-xl font-bold">Site Added Successfully!</h3>
                   <p className="text-muted-foreground">
-                    Your website has been added to our monitoring network. You'll receive a confirmation email shortly.
+                    Your website has been added to our monitoring network. You will receive a confirmation email shortly.
                   </p>
                   <Button variant="outline" className="mt-4" onClick={resetForm}>
                     Add Another Site

@@ -24,7 +24,7 @@ function TestimonialCard({ quote, author, role, avatar, rating }: TestimonialCar
             <Star key={i} className={`h-4 w-4 ${i < rating ? "text-yellow-500 fill-yellow-500" : "text-muted"}`} />
           ))}
         </div>
-        <div className="mb-4 text-lg font-medium leading-relaxed">"{quote}"</div>
+        <div className="mb-4 text-lg font-medium leading-relaxed">`{quote}`</div>
       </CardContent>
       <CardFooter className="border-t pt-4">
         <div className="flex items-center gap-4">
@@ -48,6 +48,7 @@ function TestimonialCard({ quote, author, role, avatar, rating }: TestimonialCar
 export function TestimonialsSection() {
   const [currentPage, setCurrentPage] = useState(0)
   const ref = useRef(null)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isInView = useInView(ref, { once: true })
   const [fadeIn, setFadeIn] = useState(true)
 
@@ -62,7 +63,7 @@ export function TestimonialsSection() {
     },
     {
       quote:
-        "Our e-commerce site was experiencing intermittent downtime that traditional monitoring missed. DecentralWatch caught these issues immediately.",
+        "Our e-commerce site was experiencing intermittent downtime that traditional monitoring missed. Uptora caught these issues immediately.",
       author: "Sarah Johnson",
       role: "E-commerce Owner",
       avatar: "/placeholder.svg?height=80&width=80",

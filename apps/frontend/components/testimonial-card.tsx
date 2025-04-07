@@ -12,7 +12,7 @@ export function TestimonialCard({ quote, author, role, avatar }: TestimonialCard
   return (
     <Card className="group transition-all hover:shadow-md">
       <CardContent className="pt-6">
-        <div className="mb-4 text-lg font-medium leading-relaxed">"{quote}"</div>
+        <div className="mb-4 text-lg font-medium leading-relaxed">`{quote}`</div>
       </CardContent>
       <CardFooter>
         <div className="flex items-center gap-4">

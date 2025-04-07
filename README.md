@@ -1,6 +1,6 @@
-# 🌐 DecentralWatch
+# 🌐 Uptora
 
-DecentralWatch is a **decentralized uptime monitoring platform** where validators across the globe report website uptime and get incentivized for their contributions. Say goodbye to centralized monitoring failures - DecentralWatch ensures a **trustless, transparent, and community-driven** approach to website reliability.
+Uptora is a **decentralized uptime monitoring platform** where validators across the globe report website uptime and get incentivized for their contributions. Say goodbye to centralized monitoring failures - Uptora ensures a **trustless, transparent, and community-driven** approach to website reliability.
 
 ## 🚀 Features
 
@@ -32,7 +32,7 @@ DecentralWatch is a **decentralized uptime monitoring platform** where validator
 
 ## 📬 Stay Connected
 
-- Website: [kalehub.com](https://decentralwatch.kalehub.com)
+- Website: [kalehub.com](https://Uptora.xyz)
 - Twitter: [@PratikKale26](https://x.com/pratikkale26)
 - LinkedIn: [Pratik Kale](https://www.linkedin.com/in/pratikkale26/)
 
