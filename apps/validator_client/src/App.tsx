@@ -1,13 +1,31 @@
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import {WalletModalProvider, WalletDisconnectButton, WalletMultiButton} from '@solana/wallet-adapter-react-ui';
+import {
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+  TorusWalletAdapter,
+  LedgerWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
+import { useMemo } from 'react';
 import Validate from './components/Validate';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 function App() {
+  // Initialize wallet adapters
+  const wallets = useMemo(
+    () => [
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new TorusWalletAdapter(),
+      new LedgerWalletAdapter(),
+    ],
+    []
+  );
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
             <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
-                <WalletProvider wallets={[]} autoConnect>
+                <WalletProvider wallets={wallets} autoConnect>
                     <WalletModalProvider>
                         {/* Navigation Header */}
                         <header className="flex items-center justify-between px-10 py-6 bg-gray-950 border-b border-gray-800 shadow-lg">
