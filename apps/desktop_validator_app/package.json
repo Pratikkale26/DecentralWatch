@@ -7,8 +7,9 @@
   "type": "module",
   "main": "dist-electron/main.js",
   "scripts": {
+    "dev": "npm-run-all --parallel dev:react dev:electron",
     "dev:react": "vite",
-    "dev:electron": "electron .",
+    "dev:electron": "bun run transpile:electron; cross-env NODE_ENV=development electron .",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -18,6 +19,8 @@
     "dist:linux": "bun run transpile:electron && bun run build && electron-builder --linux --x64"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
+    "npm-run-all": "^4.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
