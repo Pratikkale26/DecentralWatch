@@ -5,6 +5,7 @@ import type { PluginOption } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react() as PluginOption],
+  base: './',
   build: {
     outDir: 'dist-react',
   },
