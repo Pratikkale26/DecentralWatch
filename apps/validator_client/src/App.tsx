@@ -1,14 +1,14 @@
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
-import {WalletModalProvider, WalletDisconnectButton, WalletMultiButton} from '@solana/wallet-adapter-react-ui';
+import { WalletDisconnectButton, WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import '@solana/wallet-adapter-react-ui/styles.css';
 import {
-  PhantomWalletAdapter,
-  SolflareWalletAdapter,
-  TorusWalletAdapter,
-  LedgerWalletAdapter,
+    LedgerWalletAdapter,
+    PhantomWalletAdapter,
+    SolflareWalletAdapter,
+    TorusWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
 import { useMemo } from 'react';
 import Validate from './components/Validate';
-import '@solana/wallet-adapter-react-ui/styles.css';
 
 function App() {
   // Initialize wallet adapters

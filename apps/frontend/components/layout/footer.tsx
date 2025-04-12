@@ -1,5 +1,41 @@
-import Link from "next/link"
-import { Shield, Github, Twitter, DiscIcon as Discord, Linkedin } from "lucide-react"
+import { DiscIcon as Discord, Github, Linkedin, Shield, Twitter } from "lucide-react";
+import Link from "next/link";
+
+const SocialLinks = () => (
+  <div className="flex gap-4">
+    <Link href="https://x.com/Pratikkale26" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
+      <Twitter className="h-5 w-5" />
+      <span className="sr-only">Twitter</span>
+    </Link>
+    <Link href="https://github.com/Pratikkale26" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
+      <Github className="h-5 w-5" />
+      <span className="sr-only">GitHub</span>
+    </Link>
+    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+      <Discord className="h-5 w-5" />
+      <span className="sr-only">Discord</span>
+    </Link>
+    <Link href="https://www.linkedin.com/in/pratikkale26/" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
+      <Linkedin className="h-5 w-5" />
+      <span className="sr-only">LinkedIn</span>
+    </Link>
+  </div>
+);
+
+const FooterSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <div className="space-y-4">
+    <h3 className="font-medium">{title}</h3>
+    <ul className="space-y-2">{children}</ul>
+  </div>
+);
+
+const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <li>
+    <Link href={href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+      {children}
+    </Link>
+  </li>
+);
 
 export function Footer() {
   return (
@@ -13,103 +49,29 @@ export function Footer() {
           <p className="text-sm text-muted-foreground max-w-xs">
             A decentralized network ensuring your websites and services stay online with real-time monitoring.
           </p>
-          <div className="flex gap-4">
-            <Link href="https://x.com/Pratikkale26" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
-            </Link>
-            <Link href="https://github.com/Pratikkale26" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              <Discord className="h-5 w-5" />
-              <span className="sr-only">Discord</span>
-            </Link>
-            <Link href="https://www.linkedin.com/in/pratikkale26/" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
-              <Linkedin className="h-5 w-5" />
-              <span className="sr-only">LinkedIn</span>
-            </Link>
-          </div>
+          <SocialLinks />
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-medium">Platform</h3>
-          <ul className="space-y-2">
-            <li>
-              <Link href="#features" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Features
-              </Link>
-            </li>
-            <li>
-              <Link href="#how-it-works" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                How It Works
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Pricing
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Roadmap
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <FooterSection title="Platform">
+          <FooterLink href="#features">Features</FooterLink>
+          <FooterLink href="#how-it-works">How It Works</FooterLink>
+          <FooterLink href="#">Pricing</FooterLink>
+          <FooterLink href="#">Roadmap</FooterLink>
+        </FooterSection>
 
-        <div className="space-y-4">
-          <h3 className="font-medium">Resources</h3>
-          <ul className="space-y-2">
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Documentation
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                API Reference
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Tutorials
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Blog
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <FooterSection title="Resources">
+          <FooterLink href="#">Documentation</FooterLink>
+          <FooterLink href="#">API Reference</FooterLink>
+          <FooterLink href="#">Tutorials</FooterLink>
+          <FooterLink href="#">Blog</FooterLink>
+        </FooterSection>
 
-        <div className="space-y-4">
-          <h3 className="font-medium">Company</h3>
-          <ul className="space-y-2">
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Careers
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Terms of Service
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <FooterSection title="Company">
+          <FooterLink href="#">About Us</FooterLink>
+          <FooterLink href="#">Careers</FooterLink>
+          <FooterLink href="#">Privacy Policy</FooterLink>
+          <FooterLink href="#">Terms of Service</FooterLink>
+        </FooterSection>
       </div>
 
       <div className="container mt-8 pt-8 border-t">
@@ -131,6 +93,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-
