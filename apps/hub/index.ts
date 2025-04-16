@@ -5,6 +5,12 @@ import { PublicKey } from "@solana/web3.js";
 import nacl from "tweetnacl";
 import nacl_util from "tweetnacl-util";
 
+// Logger helper function to format logs with timestamps
+function log(message: string, data: Record<string, any> = {}) {
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] [HUB] ${message}`, data);
+}
+
 const availableValidators: { validatorId: string, socket: ServerWebSocket<unknown>, publicKey: string }[] = [];
 
 const CALLBACKS : { [callbackId: string]: (data: IncomingMessage) => void } = {}
@@ -18,12 +24,18 @@ Bun.serve({
       return new Response("Upgrade failed", { status: 500 });
     },
     port: 8081,
+    error(error) {
+      log(`Server error: ${error.message}`, { stack: error.stack });
+      return new Response(`Server error: ${error.message}`, { status: 500 });
+    },
     websocket: {
+        open(ws: ServerWebSocket<unknown>) {
+            log("New connection established", { clientAddress: ws.remoteAddress });
+        },
         async message(ws: ServerWebSocket<unknown>, message: string) {
             const data: IncomingMessage = JSON.parse(message);
-            
-            if (data.type === 'signup') {
 
+            if (data.type === 'signup') {
                 const verified = await verifyMessage(
                     `Signed message for ${data.data.callbackId}, ${data.data.publicKey}`,
                     data.data.publicKey,
@@ -31,6 +43,7 @@ Bun.serve({
                 );
                 if (verified) {
                     await signupHandler(ws, data.data);
+                } else {
                 }
             } else if (data.type === 'validate') {
                 CALLBACKS[data.data.callbackId](data);
@@ -38,7 +51,13 @@ Bun.serve({
             }
         },
         async close(ws: ServerWebSocket<unknown>) {
-            availableValidators.splice(availableValidators.findIndex(v => v.socket === ws), 1);
+            const validator = availableValidators.find(v => v.socket === ws);
+            if (validator) {
+                log("Validator disconnected", { validatorId: validator.validatorId, publicKey: validator.publicKey });
+                availableValidators.splice(availableValidators.findIndex(v => v.socket === ws), 1);
+            } else {
+                log("Unknown connection closed", { clientAddress: ws.remoteAddress });
+            }
         }
     },
 });
@@ -51,6 +70,7 @@ async function signupHandler(ws: ServerWebSocket<unknown>, { ip, publicKey, sign
     });
 
     if (validatorDb) {
+        log("Existing validator reconnected", { validatorId: validatorDb.id, publicKey, ip });
         ws.send(JSON.stringify({
             type: 'signup',
             data: {
@@ -76,6 +96,7 @@ async function signupHandler(ws: ServerWebSocket<unknown>, { ip, publicKey, sign
         },
     });
 
+    log("New validator registered successfully", { validatorId: validator.id, publicKey, ip });
     ws.send(JSON.stringify({
         type: 'signup',
         data: {
@@ -102,6 +123,9 @@ async function verifyMessage(message: string, publicKey: string, signature: stri
     return result;
 }
 
+// Log server startup information
+log("Hub server started", { port: 8081, availableValidators: 0, costPerValidation: COST_PER_VALIDATION });
+
 setInterval(async () => {
     const websitesToMonitor = await prismaClient.website.findMany({
         where: {
@@ -112,7 +136,13 @@ setInterval(async () => {
     for (const website of websitesToMonitor) {
         availableValidators.forEach(validator => {
             const callbackId = randomUUIDv7();
-            console.log(`Sending validate to ${validator.validatorId} ${website.url}`);
+            log("Sending validation request", { 
+                validatorId: validator.validatorId, 
+                websiteUrl: website.url, 
+                websiteId: website.id,
+                callbackId
+            });
+            
             validator.socket.send(JSON.stringify({
                 type: 'validate',
                 data: {
@@ -124,12 +154,27 @@ setInterval(async () => {
             CALLBACKS[callbackId] = async (data: IncomingMessage) => {
                 if (data.type === 'validate') {
                     const { validatorId, status, latency, signedMessage } = data.data;
+                    log("Received validation response", { 
+                        validatorId, 
+                        websiteUrl: website.url, 
+                        websiteId: website.id,
+                        status, 
+                        latency, 
+                        callbackId 
+                    });
+                    
                     const verified = await verifyMessage(
                         `Replying to ${callbackId}`,
                         validator.publicKey,
                         signedMessage
                     );
+                    
                     if (!verified) {
+                        log("Validation response signature verification failed", { 
+                            validatorId, 
+                            callbackId,
+                            websiteUrl: website.url
+                        });
                         return;
                     }
 
@@ -149,6 +194,12 @@ setInterval(async () => {
                             data: {
                                 pendingPayouts: { increment: COST_PER_VALIDATION },
                             },
+                        });
+                        
+                        log("Validation recorded and payment incremented", { 
+                            validatorId, 
+                            websiteId: website.id, 
+                            payment: COST_PER_VALIDATION 
                         });
                     });
                 }
