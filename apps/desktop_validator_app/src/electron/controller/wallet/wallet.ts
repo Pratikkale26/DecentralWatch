@@ -2,14 +2,16 @@ import { Keypair } from "@solana/web3.js";
 import bs58 from "bs58";
 import { saveWalletToKeytar, getWalletFromKeytar } from "./secureWallet.js";
 import nacl from "tweetnacl";
+import { BrowserWindow } from "electron";
 
 // Generate wallet and store
-export const createAndStoreWallet = async () => {
+export const createAndStoreWallet = async (mainWindow: BrowserWindow) => {
   const keypair = Keypair.generate();
   const privateKey = bs58.encode(keypair.secretKey); // encode as string
 
   await saveWalletToKeytar(privateKey);
-  return keypair.publicKey.toBase58();
+  mainWindow.webContents.send('wallet-created', keypair.publicKey.toBase58());
+  // return keypair.publicKey.toBase58();
 };
 
 // Load wallet
