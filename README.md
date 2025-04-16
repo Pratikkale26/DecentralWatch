@@ -32,7 +32,7 @@ DecentralWatch is a **decentralized uptime monitoring platform** where validator
 
 ## 📬 Stay Connected
 
-- Website: [kalehub.com](https://Uptora.xyz)
+- Website: [DecentralWatch.com](https://DecentralWatch.kalehub.com)
 - Twitter: [@PratikKale26](https://x.com/pratikkale26)
 - LinkedIn: [Pratik Kale](https://www.linkedin.com/in/pratikkale26/)
 
