@@ -1,8 +1,9 @@
-import { Header } from "@/components/layout/header";
-import Providers from "@/components/providers";
-import { siteConfig } from "@/config/siteConfig";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import {ClerkProvider} from '@clerk/nextjs'
+import { ThemeProvider } from "@/components/theme-provider";
+import { Header } from "@/components/layout/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +15,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = siteConfig;
+export const metadata: Metadata = {
+  title: "Uptora",
+  description: "Uptora is a decentralized uptime monitoring platform where validators across the globe report website uptime and get incentivized for their contributions. Say goodbye to centralized monitoring failures - Uptora ensures a trustless, transparent, and community-driven approach to website reliability.",
+};
 
 export default function RootLayout({
   children,
@@ -23,14 +27,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Providers>
+      <ClerkProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <Header />
+          >
+            <Header />
           {children}
         </body>
-      </Providers>
-    </html >
+        </ThemeProvider>
+      </ClerkProvider>
+    </html>
   );
 }
