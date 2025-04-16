@@ -126,7 +126,7 @@ export function FeaturesSection() {
             <div className="space-y-4">
               <div className="grid grid-cols-3 gap-4 text-sm">
                 <div className="font-medium">Feature</div>
-                <div className="font-medium text-primary">Uptora</div>
+                <div className="font-medium text-primary">DecentralWatch</div>
                 <div className="font-medium text-muted-foreground">Traditional</div>
               </div>
               <div className="grid grid-cols-3 gap-4 text-sm border-t pt-4">

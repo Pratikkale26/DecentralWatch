@@ -1,6 +1,6 @@
-# 🌐 Uptora
+# 🌐 DecentralWatch
 
-Uptora is a **decentralized uptime monitoring platform** where validators across the globe report website uptime and get incentivized for their contributions. Say goodbye to centralized monitoring failures - Uptora ensures a **trustless, transparent, and community-driven** approach to website reliability.
+DecentralWatch is a **decentralized uptime monitoring platform** where validators across the globe report website uptime and get incentivized for their contributions. Say goodbye to centralized monitoring failures - DecentralWatch ensures a **trustless, transparent, and community-driven** approach to website reliability.
 
 ## 🚀 Features
 

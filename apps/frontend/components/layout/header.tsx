@@ -45,7 +45,7 @@ export function Header() {
         <div className="flex items-center gap-6 md:gap-10">
           <Link href="/" className="flex items-center space-x-2">
             <Shield className="h-6 w-6 text-primary" />
-            <span className="inline-block font-bold">Uptora</span>
+            <span className="inline-block font-bold">DecentralWatch</span>
           </Link>
           {/* Hide navigation links on pages other than "/" */}
           {pathname === "/" && (

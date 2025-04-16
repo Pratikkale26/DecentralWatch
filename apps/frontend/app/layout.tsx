@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Uptora",
-  description: "Uptora is a decentralized uptime monitoring platform where validators across the globe report website uptime and get incentivized for their contributions. Say goodbye to centralized monitoring failures - Uptora ensures a trustless, transparent, and community-driven approach to website reliability.",
+  title: "DecentralWatch",
+  description: "DecentralWatch is a decentralized uptime monitoring platform where validators across the globe report website uptime and get incentivized for their contributions. Say goodbye to centralized monitoring failures - DecentralWatch ensures a trustless, transparent, and community-driven approach to website reliability.",
 };
 
 export default function RootLayout({

@@ -30,7 +30,7 @@ function App() {
                         {/* Navigation Header */}
                         <header className="flex items-center justify-between px-10 py-6 bg-gray-950 border-b border-gray-800 shadow-lg">
                             <h1 className="text-3xl md:text-4xl font-extrabold text-blue-500 tracking-tight">
-                                Uptora Validator
+                            DecentralWatch Validator
                             </h1>
                             <div className="flex gap-3">
                                 <WalletMultiButton />

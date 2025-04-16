@@ -39,7 +39,7 @@ export function CtaSection() {
             </h2>
             <p className="text-muted-foreground max-w-md">
               Whether you need reliable monitoring for your websites or want to earn rewards as a validator,
-              Uptora has you covered.
+              DecentralWatch has you covered.
             </p>
           </div>
 

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "description": "DecentralWatch Validator Desktop Application",
-  "author": "Uptora Team",
+  "author": "DecentralWatch Team",
   "type": "module",
   "main": "dist-electron/main.js",
   "scripts": {

@@ -8,7 +8,7 @@ export function Footer() {
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <Shield className="h-6 w-6 text-primary" />
-            <span className="font-bold">Uptora</span>
+            <span className="font-bold">DecentralWatch</span>
           </div>
           <p className="text-sm text-muted-foreground max-w-xs">
             A decentralized network ensuring your websites and services stay online with real-time monitoring.
@@ -115,7 +115,7 @@ export function Footer() {
       <div className="container mt-8 pt-8 border-t">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-center text-sm text-muted-foreground md:text-left">
-            &copy; {new Date().getFullYear()} Uptora. All rights reserved.
+            &copy; {new Date().getFullYear()} DecentralWatch. All rights reserved.
           </p>
           <div className="flex gap-4">
             <Link href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">

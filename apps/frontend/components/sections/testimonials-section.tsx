@@ -63,7 +63,7 @@ export function TestimonialsSection() {
     },
     {
       quote:
-        "Our e-commerce site was experiencing intermittent downtime that traditional monitoring missed. Uptora caught these issues immediately.",
+        "Our e-commerce site was experiencing intermittent downtime that traditional monitoring missed. DecentralWatch caught these issues immediately.",
       author: "Sarah Johnson",
       role: "E-commerce Owner",
       avatar: "/placeholder.svg?height=80&width=80",

@@ -1,5 +1,5 @@
 {
-    "appId": "com.uptora.validator-node",
+    "appId": "com.DecentralWatch.validator-node",
     "files": ["dist-electron", "dist-react"],
     "extraResources": ["dist-electron/preload.cjs", "src/assets/**"],
     "icon": "./desktopIcon.png",
