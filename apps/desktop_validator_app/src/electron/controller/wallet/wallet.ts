@@ -1,7 +1,6 @@
 import { Keypair } from "@solana/web3.js";
 import bs58 from "bs58";
 import { saveWalletToKeytar, getWalletFromKeytar } from "./secureWallet.js";
-import nacl from "tweetnacl";
 import { BrowserWindow } from "electron";
 
 // Generate wallet and store
