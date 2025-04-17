@@ -2,9 +2,9 @@ import { app, BrowserWindow } from 'electron';
 import path from 'path';
 import { isDev } from './util.js';
 import { getPreloadPath } from './pathResolver.js';
-import { createAndStoreWallet } from './controller/wallet/wallet.js';
+import { createAndStoreWallet, getPubKey, loadWallet } from './controller/wallet/wallet.js';
 import { ipcMain } from 'electron';
-import { getWalletFromKeytar } from './controller/wallet/secureWallet.js';
+import { startValidator } from './controller/validator.js';
 
 type test = string;
 
@@ -27,8 +27,19 @@ app.on('ready', () => {
   });
 
   ipcMain.on('getPubKey', async (event) => {
-    const pubKey = await getWalletFromKeytar();
+    const pubKey = await getPubKey();
     event.reply('getPubKey', pubKey);
   });
+
+  // get wallet from keytar
+  // const getwallet = async () => {
+  //   const loadedWallet = await loadWallet()
+  //   console.log(loadedWallet)
+  // }
+  // getwallet()
+
+  // start validator
+  startValidator();
+
 
 });

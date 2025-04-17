@@ -11,7 +11,7 @@ export const createAndStoreWallet = async (mainWindow: BrowserWindow) => {
 
   await saveWalletToKeytar(privateKey);
   mainWindow.webContents.send('wallet-created', keypair.publicKey.toBase58());
-  // return keypair.publicKey.toBase58();
+  return keypair.publicKey.toBase58();
 };
 
 // Load wallet
@@ -23,12 +23,9 @@ export const loadWallet = async () => {
   return keypair;
 };
 
-// Sign message
-export const signMessage = async (message: string): Promise<string | null> => {
+// get PubKey
+export const getPubKey = async () => {
   const keypair = await loadWallet();
   if (!keypair) return null;
-
-  const messageBytes = new TextEncoder().encode(message);
-  const signature = nacl.sign.detached(messageBytes, keypair.secretKey);
-  return bs58.encode(signature);
+  return keypair.publicKey.toBase58();
 };
