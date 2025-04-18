@@ -22,4 +22,11 @@ contextBridge.exposeInMainWorld('electron', {
     });
   },
 
+  getBalance: () => {
+    ipcRenderer.send('getBalance');
+    return new Promise<number>((resolve) => {
+      ipcRenderer.once('gotBalance', (_event, balance) => resolve(balance));
+    });
+  }
+
 });

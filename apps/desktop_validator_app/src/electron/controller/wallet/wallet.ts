@@ -1,4 +1,4 @@
-import { Keypair } from "@solana/web3.js";
+import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL } from "@solana/web3.js";
 import bs58 from "bs58";
 import { saveWalletToKeytar, getWalletFromKeytar } from "./secureWallet.js";
 import { BrowserWindow } from "electron";
@@ -36,4 +36,20 @@ export const getPubKey = async () => {
   const keypair = await loadWallet();
   if (!keypair) return null;
   return keypair.publicKey.toBase58();
+};
+
+// get balance
+export const getBalance = async () => {
+  const keypair = await loadWallet();
+  if (!keypair) return null;
+
+  const connection = new Connection(clusterApiUrl('devnet'), "confirmed");
+
+  try {
+    const balance = await connection.getBalance(keypair.publicKey);
+    return balance / LAMPORTS_PER_SOL; // convert lamports to SOL
+  } catch (error) {
+    console.error("Error getting balance:", error);
+    return null;
+  }
 };
