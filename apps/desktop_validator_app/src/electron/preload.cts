@@ -13,7 +13,13 @@ contextBridge.exposeInMainWorld('electron', {
     return new Promise<string>((resolve) => {
       ipcRenderer.once('getPubKey', (_event, pubKey) => resolve(pubKey));
     });
-}
+  },
 
+  restoreWallet: (seedPhrase: string) => {
+    ipcRenderer.send('restore-wallet', seedPhrase);
+    return new Promise<string>((resolve) => {
+      ipcRenderer.once('wallet-restored', (_event, pubKey) => resolve(pubKey));
+    });
+  },
 
 });

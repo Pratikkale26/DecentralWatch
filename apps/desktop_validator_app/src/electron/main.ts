@@ -2,7 +2,7 @@ import { app, BrowserWindow } from 'electron';
 import path from 'path';
 import { isDev } from './util.js';
 import { getPreloadPath } from './pathResolver.js';
-import { createAndStoreWallet, getPubKey } from './controller/wallet/wallet.js';
+import { createAndStoreWallet, getPubKey, restoreWallet } from './controller/wallet/wallet.js';
 import { ipcMain } from 'electron';
 import { startValidator } from './controller/validator.js';
 
@@ -29,6 +29,13 @@ app.on('ready', () => {
     event.reply('getPubKey', pubKey);
   });
 
+  // restore wallet
+  ipcMain.on('restore-wallet', async (event, seedPhrase) => {
+    const pubKey = await restoreWallet(seedPhrase);
+    event.reply('wallet-restored', pubKey);
+  });
+
+  
   // get wallet from keytar
   // const getwallet = async () => {
   //   const loadedWallet = await loadWallet()

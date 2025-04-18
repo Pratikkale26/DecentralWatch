@@ -13,6 +13,15 @@ export const createAndStoreWallet = async (mainWindow: BrowserWindow) => {
   return keypair.publicKey.toBase58();
 };
 
+// restore wallet
+export const restoreWallet = async (seedPhrase: string) => {
+  const keypair = Keypair.fromSeed(bs58.decode(seedPhrase));
+  const privateKey = bs58.encode(keypair.secretKey); // encode as string
+
+  await saveWalletToKeytar(privateKey);
+  return keypair.publicKey.toBase58();
+};
+
 // Load wallet
 export const loadWallet = async () => {
   const stored = await getWalletFromKeytar();
