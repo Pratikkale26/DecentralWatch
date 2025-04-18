@@ -1,4 +1,4 @@
-import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL, PublicKey, sendAndConfirmTransaction, SystemProgram, Transaction } from "@solana/web3.js";
 import bs58 from "bs58";
 import { saveWalletToKeytar, getWalletFromKeytar } from "./secureWallet.js";
 import { BrowserWindow } from "electron";
@@ -53,3 +53,27 @@ export const getBalance = async () => {
     return null;
   }
 };
+
+// send sol
+export const sendSol = async (receiver: string, amount: number) => {
+  const keypair = await loadWallet();
+  if (!keypair) return null;
+
+  const connection = new Connection(clusterApiUrl('devnet'), "confirmed");
+
+  try {
+    const transaction = new Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey: keypair.publicKey,
+        toPubkey: new PublicKey(receiver),
+        lamports: amount * LAMPORTS_PER_SOL,
+      })
+    );
+    const signature = await sendAndConfirmTransaction(connection, transaction, [keypair]);
+    return signature;
+  } catch (error) {
+    console.error("Error sending SOL:", error);
+    return null;
+  }
+};
+

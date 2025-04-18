@@ -33,10 +33,16 @@ function WalletDashboard() {
 
   const handleSend = async () => {
     try {
-      await window.electron.sendSol(receiver, parseFloat(amount));
+        if(!receiver || !amount) return setStatus("Please enter Address/Amount")
+      const res = await window.electron.sendSol(receiver, parseFloat(amount));
       setStatus(`✅ Sent ${amount} SOL to ${receiver}`);
       setAmount('');
       setReceiver('');
+
+      if (res) {
+        const bal = await window.electron.getBalance();
+        setBalance(bal);
+      }
     } catch (err) {
       setStatus('❌ Transaction failed.');
       console.log(err);
@@ -47,7 +53,7 @@ function WalletDashboard() {
     <div className="bg-gray-600 p-2 text-white flex flex-col items-center">
       <div className="max-w-2xl w-full space-y-4 bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800">
 
-        <h1 className="text-3xl font-bold text-indigo-400 text-center">💼 Validator Wallet</h1>
+        <h2 className="text-4xl mb-8 font-bold text-indigo-400 text-center">💼 Validator Wallet</h2>
 
         {pubKey && (
           <div className="space-y-3 text-center">
@@ -57,11 +63,11 @@ function WalletDashboard() {
         )}
 
         <div className="bg-gray-800 p-5 rounded-xl space-y-3 border border-gray-700">
-          <h2 className="text-lg font-semibold text-yellow-400">🟡 Pending Payout</h2>
+          <h2 className="text-lg font-semibold text-yellow-400">🟡 Earned Rewards</h2>
           <p className="text-2xl">{pendingPayout} SOL</p>
           <button
             onClick={handleClaim}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black py-2 px-4 rounded-lg font-semibold transition"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-lg font-semibold transition"
           >
             Claim Now
           </button>

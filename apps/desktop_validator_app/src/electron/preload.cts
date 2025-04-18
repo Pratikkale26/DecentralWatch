@@ -27,6 +27,14 @@ contextBridge.exposeInMainWorld('electron', {
     return new Promise<number>((resolve) => {
       ipcRenderer.once('gotBalance', (_event, balance) => resolve(balance));
     });
+  },
+
+  sendSol: (receiver: string, amount: number) => {
+    ipcRenderer.send('sendSol', receiver, amount);
+    return new Promise<string>((resolve) => {
+      ipcRenderer.once('sendSol', (_event, res) => resolve(res));
+    })
+    
   }
 
 });
