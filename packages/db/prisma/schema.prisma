@@ -8,41 +8,73 @@ datasource db {
 }
 
 model User {
-  id          String     @id @default(uuid())
-  email       String     @unique
-  name        String?
+  id       String      @id @default(uuid())
+  email    String      @unique
+  name     String?
+  payment  Payment[]
 }
 
 model Website {
-  id            String     @id @default(uuid())
-  url         String
-  userId      String
-  websiteTicks websiteTick[]
-  disabled    Boolean    @default(false)
+  id           String        @id @default(uuid())
+  url          String
+  userId       String
+  websiteTicks WebsiteTick[]
+  disabled     Boolean       @default(false)
+  expiry       DateTime?
+  payment      Payment[]
 }
 
 model Validator {
-  id              String     @id @default(uuid())
-  publicKey       String
+  id              String        @id @default(uuid())
+  publicKey       String        
   location        String
   ip              String
-  pendingPayouts  Int      @default(0)
-  validatorTicks  websiteTick[]
+  pendingPayouts  Int           @default(0)
+  payouts         Payout[]
+  validatorTicks  WebsiteTick[]
 }
 
-model websiteTick {
-  id          String     @id @default(uuid())
+model WebsiteTick {
+  id          String        @id @default(uuid())
   websiteId   String
   validatorId String
-  status      websiteStatus
+  status      WebsiteStatus
   latency     Float
-  website     Website    @relation(fields: [websiteId], references: [id])
-  validator   Validator  @relation(fields: [validatorId], references: [id])
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @default(now()) @updatedAt
+  website     Website       @relation(fields: [websiteId], references: [id])
+  validator   Validator     @relation(fields: [validatorId], references: [id])
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @default(now()) @updatedAt
 }
 
-enum websiteStatus {
+enum WebsiteStatus {
   UP
   DOWN
+}
+
+model Payout {
+  id           Int              @id @default(autoincrement())
+  validatorId  String
+  validator    Validator        @relation(fields: [validatorId], references: [id])
+  amount       Int
+  signature    String
+  status       TransactionStatus
+}
+
+model Payment {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  websiteId String
+  website   Website  @relation(fields: [websiteId], references: [id])
+  amount    Int
+  status    TransactionStatus
+  signature String
+  createdAt DateTime @default(now())
+}
+
+
+enum TransactionStatus {
+  Processing
+  Success
+  Failure
 }

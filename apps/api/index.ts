@@ -13,10 +13,14 @@ app.post("/api/v1/website", authMiddleware, async (req, res) => {
     const userId = req.userId!;
     const {url} = req.body;
 
+    const expiryDate = new Date();
+    expiryDate.setDate(expiryDate.getDate() + 30);
+
     const data = await prismaClient.website.create({
         data: {
             userId,
             url,
+            expiry: expiryDate
         }
     })
 
@@ -40,6 +44,10 @@ app.get("/api/v1/website/status", authMiddleware, async (req, res) => {
             websiteTicks: true
         }
     })
+    if (!data) {
+        res.status(404).json({ error: "Website not found or expired." });
+        return
+      }      
 
     res.json(data)
 });
@@ -47,11 +55,16 @@ app.get("/api/v1/website/status", authMiddleware, async (req, res) => {
 // get all websites
 app.get("/api/v1/websites", authMiddleware, async (req, res) => {
     const userId = req.userId;
+    const now = new Date();
+
 
     const websites = await prismaClient.website.findMany({
         where:{
             userId: userId,
-            disabled: false
+            disabled: false,
+            expiry: {
+                gt: now
+            }
         },
         include:{
             websiteTicks: true
