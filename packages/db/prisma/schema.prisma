@@ -21,7 +21,7 @@ model Website {
   websiteTicks WebsiteTick[]
   disabled     Boolean       @default(false)
   expiry       DateTime?
-  payment      Payment[]
+  signature    String
 }
 
 model Validator {
@@ -59,18 +59,6 @@ model Payout {
   signature    String
   status       TransactionStatus
 }
-
-model Payment {
-  id        String   @id @default(uuid())
-  userId    String
-  websiteId String
-  website   Website  @relation(fields: [websiteId], references: [id])
-  amount    Int
-  status    TransactionStatus
-  signature String
-  createdAt DateTime @default(now())
-}
-
 
 enum TransactionStatus {
   Processing

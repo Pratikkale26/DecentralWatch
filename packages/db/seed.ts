@@ -16,6 +16,9 @@ async function seed() {
         data: {
             url: "https://www.google.com",
             userId: USER_ID,
+            expiry: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+            disabled: false,
+            signature: "fdfdfadfa"
         }
     })
 

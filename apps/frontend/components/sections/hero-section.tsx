@@ -5,9 +5,20 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { useAuth } from "@clerk/nextjs"
+import { useRouter } from "next/navigation"
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const { isSignedIn } = useAuth()
+  const router = useRouter()
+  
+    useEffect(() => {
+      if (isSignedIn) {
+        router.push("/dashboard")
+      }
+    }, [isSignedIn, router]); 
+    
 
   useEffect(() => {
     setIsVisible(true)

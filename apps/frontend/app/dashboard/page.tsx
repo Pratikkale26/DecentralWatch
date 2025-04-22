@@ -5,6 +5,9 @@ import { useWebsites } from '@/hooks/useWebsites';
 import axios from 'axios';
 import { API_BACKEND_URL } from '@/config';
 import { useAuth } from '@clerk/nextjs';
+import { useWallet, useConnection } from '@solana/wallet-adapter-react';
+import { PublicKey, SystemProgram, Transaction } from '@solana/web3.js';
+
 
 type WindowStatus = 'up' | 'down' | 'unknown';
 
@@ -236,22 +239,50 @@ function WebsiteCard({ website }: { website: Website }) {
 interface AddWebsiteModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onAdd: (website: { name: string; url: string }) => void;
+  onAdd: (website: { name: string; url: string, txSignature: string }) => void;
 }
 
 function AddWebsiteModal({ isOpen, onClose, onAdd }: AddWebsiteModalProps) {
   const [name, setName] = useState('');
   const [url, setUrl] = useState('');
+  const [txSignature, setTxSignature] = useState("");
+  const { connection } = useConnection();
+  const { publicKey, sendTransaction } = useWallet();
+
+
 
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onAdd({ name, url });
+    onAdd({ name, url, txSignature });
     setName('');
     setUrl('');
+    setTxSignature("");
     onClose();
   };
+
+  async function makePayment() {
+
+    const transaction = new Transaction().add(
+        SystemProgram.transfer({
+            fromPubkey: publicKey!,
+            toPubkey: new PublicKey("7m6ah1RGoYzLD65FHGbyXJffP9hPEZzh6e6HmAzGpVt9"),
+            lamports: 100000000,
+        })
+    );
+
+    const {
+        context: { slot: minContextSlot },
+        value: { blockhash, lastValidBlockHeight }
+    } = await connection.getLatestBlockhashAndContext();
+
+    const signature = await sendTransaction(transaction, connection, { minContextSlot });
+
+    await connection.confirmTransaction({ blockhash, lastValidBlockHeight, signature });
+    setTxSignature(signature);
+    console.log(signature.toString());
+}
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -288,11 +319,11 @@ function AddWebsiteModal({ isOpen, onClose, onAdd }: AddWebsiteModalProps) {
               >
                 Cancel
               </button>
-              <button onClick={handleSubmit}
-                type="submit"
+              <button onClick={txSignature ? handleSubmit : makePayment}
+                type="button"
                 className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
-                Add Website
+                {txSignature ? "Add Website" : "Pay 0.1 SOL"}
               </button>
             </div>
           </div>
@@ -306,12 +337,14 @@ function App() {
   const {websites, refreshWebsites} = useWebsites();
   const {getToken} = useAuth();
 
-  const handleAddWebsite = async ({ url }: { name: string; url: string }) => {
+  const handleAddWebsite = async ({ url, txSignature }: { name: string; url: string, txSignature: string }) => {
     const token = await getToken();
     axios.post(`${API_BACKEND_URL}/api/v1/website`, {
-      url
+      url: url,
+      signature: txSignature
     }, {
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`
       }
     })

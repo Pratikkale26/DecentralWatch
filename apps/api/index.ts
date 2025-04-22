@@ -2,22 +2,58 @@ import express from "express";
 import { authMiddleware } from "./middleware";
 import { prismaClient } from "db/client";
 import cors from "cors";
-// import { Clerk } from "@clerk/clerk-sdk-node";
 import nacl from "tweetnacl";
-import { PublicKey } from "@solana/web3.js";
-import { JWT_PUBLIC_KEY } from "./config";
-
+import { Connection, PublicKey } from "@solana/web3.js";
 
 
 const app = express();
 app.use(express.json());
 
 app.use(cors());
+const connection = new Connection("https://api.devnet.solana.com");
+
+const PARENT_WALLET_ADDRESS = "7m6ah1RGoYzLD65FHGbyXJffP9hPEZzh6e6HmAzGpVt9";
 
 // create website
 app.post("/api/v1/website", authMiddleware, async (req, res) => {
     const userId = req.userId!;
-    const {url} = req.body;
+    const {url, signature: txSignature} = req.body;
+
+    const user = await prismaClient.user.findFirst({
+        where: {
+            id: userId
+        }
+    })
+
+    const transaction = await connection.getTransaction(txSignature, {
+        maxSupportedTransactionVersion: 1
+    });
+
+    console.log(transaction);    
+
+    // // check if the transaction is valid
+    if ((transaction?.meta?.postBalances[1] ?? 0) - (transaction?.meta?.preBalances[1] ?? 0) !== 100000000) {
+        res.status(411).json({
+            message: "Transaction signature/amount incorrect"
+        })
+        return
+    }
+
+    // // check if the transaction is sent to the correct address
+    if (transaction?.transaction.message.getAccountKeys().get(1)?.toString() !== PARENT_WALLET_ADDRESS) {
+        res.status(411).json({
+            message: "Transaction sent to wrong address"
+        })
+        return
+    }
+
+    // // check if the transaction is sent from the correct address
+    if (transaction?.transaction.message.getAccountKeys().get(0)?.toString() !== user?.address) {
+        res.status(411).json({
+            message: "Transaction sent from wrong address"
+        })
+        return
+    }
 
     const expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + 30);
@@ -44,7 +80,10 @@ app.get("/api/v1/website/status", authMiddleware, async (req, res) => {
         where:{
             id: websiteId,
             userId,   // it will make sure that the website belongs to the user
-            disabled: false
+            disabled: false,
+            expiry: {
+                gt: new Date()
+            }
         },
         include:{
             websiteTicks: true
@@ -101,6 +140,32 @@ app.delete("/api/v1/website/:websiteId", authMiddleware, async (req, res) => {
     message: "Website disabled successfully"
   })
 });
+
+// auto disable website after 30 days
+app.use(async (req, res, next) => {
+    const now = new Date();
+    const websites = await prismaClient.website.findMany({
+        where: {
+            disabled: false,
+            expiry: {
+                lte: now
+            }
+        }
+    })
+
+    for (const website of websites) {
+        await prismaClient.website.update({
+            where: {
+                id: website.id
+            },
+            data: {
+                disabled: true
+            }
+        })
+    }
+    next();
+})
+
 
 // link wallet
 app.post("/api/v1/link-wallet", authMiddleware, async (req, res) => {
