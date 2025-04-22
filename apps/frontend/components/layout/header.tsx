@@ -7,6 +7,9 @@ import { Shield, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs"
+import { WalletDisconnectButton, WalletMultiButton } from "@solana/wallet-adapter-react-ui"
+import '@solana/wallet-adapter-react-ui/styles.css';
+import { useWallet } from '@solana/wallet-adapter-react';
 
 const NavLinks = ({ onClick }: { onClick?: () => void }) => (
   <>
@@ -27,6 +30,8 @@ export function Header() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const {publicKey} = useWallet()
+
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
@@ -70,6 +75,9 @@ export function Header() {
           <SignedIn>
             <UserButton />
           </SignedIn>
+          <div className='flex'>
+            {publicKey ? <WalletDisconnectButton /> : <WalletMultiButton /> }
+          </div>
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>

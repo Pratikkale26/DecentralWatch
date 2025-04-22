@@ -4,6 +4,7 @@ import "./globals.css";
 import {ClerkProvider} from '@clerk/nextjs'
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/header";
+import WalletContextProvider from "@/components/WalletAdaptors";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,13 +30,15 @@ export default function RootLayout({
     <html lang="en">
       <ClerkProvider>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <WalletContextProvider>
 
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
-            <Header />
-          {children}
-        </body>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            >
+              <Header />
+            {children}
+          </body>
+          </WalletContextProvider>
         </ThemeProvider>
       </ClerkProvider>
     </html>
