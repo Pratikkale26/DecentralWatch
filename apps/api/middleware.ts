@@ -16,7 +16,6 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
         res.status(401).send("Unauthorized");
         return;
     }
-    
     req.userId = decoded.sub as string;
     next();
 }

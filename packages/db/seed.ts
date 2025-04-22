@@ -7,6 +7,8 @@ async function seed() {
         data: {
             id: USER_ID,
             email: "admin@admin.com",
+            address: "0x1231231231231231231231231231231231231231",
+            name: "Admin kale",
         }
     })
 

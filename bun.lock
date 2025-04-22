@@ -3360,7 +3360,15 @@
 
     "@bundled-es-modules/cookie/cookie": ["cookie@0.7.2", "", {}, ""],
 
+    "@clerk/backend/@clerk/shared": ["@clerk/shared@3.2.3", "", { "dependencies": { "@clerk/types": "^4.50.1", "dequal": "2.0.3", "glob-to-regexp": "0.4.1", "js-cookie": "3.0.5", "std-env": "^3.7.0", "swr": "^2.2.0" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" } }, ""],
+
     "@clerk/backend/cookie": ["cookie@1.0.2", "", {}, ""],
+
+    "@clerk/backend/tslib": ["tslib@2.8.1", "", {}, ""],
+
+    "@clerk/clerk-react/@clerk/shared": ["@clerk/shared@3.2.3", "", { "dependencies": { "@clerk/types": "^4.50.1", "dequal": "2.0.3", "glob-to-regexp": "0.4.1", "js-cookie": "3.0.5", "std-env": "^3.7.0", "swr": "^2.2.0" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" } }, ""],
+
+    "@clerk/clerk-react/tslib": ["tslib@2.8.1", "", {}, ""],
 
     "@electron/asar/commander": ["commander@5.1.0", "", {}, ""],
 
@@ -3417,6 +3425,8 @@
     "@jridgewell/gen-mapping/@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.25", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, ""],
 
     "@jridgewell/source-map/@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.25", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, ""],
+
+    "@keystonehq/bc-ur-registry/tslib": ["tslib@2.8.1", "", {}, ""],
 
     "@keystonehq/bc-ur-registry-sol/@keystonehq/bc-ur-registry": ["@keystonehq/bc-ur-registry@0.7.0", "", { "dependencies": { "@ngraveio/bc-ur": "^1.1.5", "bs58check": "^2.1.2", "tslib": "^2.3.0" } }, "sha512-E6NUd6Y+YYM+IcYGOEXfO9+MU1s63Qjm8brtHftvNhxbdXhGtTYIsa4FQmqZ6q34q91bMkMqUQFsQYPmIxcxfg=="],
 
@@ -3487,6 +3497,8 @@
     "@solflare-wallet/sdk/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
 
     "@solflare-wallet/sdk/uuid": ["uuid@9.0.1", "", { "bin": { "uuid": "dist/bin/uuid" } }, "sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA=="],
+
+    "@swc/helpers/tslib": ["tslib@2.8.1", "", {}, ""],
 
     "@tailwindcss/postcss/@tailwindcss/node": ["@tailwindcss/node@4.0.17", "", { "dependencies": { "enhanced-resolve": "^5.18.1", "jiti": "^2.4.2", "tailwindcss": "4.0.17" } }, ""],
 
@@ -3584,7 +3596,13 @@
 
     "app-builder-lib/semver": ["semver@7.7.1", "", { "bin": "bin/semver.js" }, ""],
 
+    "aria-hidden/tslib": ["tslib@2.8.1", "", {}, ""],
+
     "asn1.js/bn.js": ["bn.js@4.12.1", "", {}, "sha512-k8TVBiPkPJT9uHLdOKfFpqcfprwBFOAAXXozRubr7R7PfIuKvQlzcI4M0pALeqXN09vdaMbUdUj+pass+uULAg=="],
+
+    "ast-types/tslib": ["tslib@2.8.1", "", {}, ""],
+
+    "async-mutex/tslib": ["tslib@2.8.1", "", {}, ""],
 
     "bl/buffer": ["buffer@5.7.1", "", { "dependencies": { "base64-js": "^1.3.1", "ieee754": "^1.1.13" } }, ""],
 
@@ -3695,6 +3713,8 @@
     "finalhandler/debug": ["debug@2.6.9", "", { "dependencies": { "ms": "2.0.0" } }, ""],
 
     "foreground-child/signal-exit": ["signal-exit@4.1.0", "", {}, ""],
+
+    "framer-motion/tslib": ["tslib@2.8.1", "", {}, ""],
 
     "frontend/@types/node": ["@types/node@20.17.28", "", { "dependencies": { "undici-types": "~6.19.2" } }, ""],
 
@@ -3848,6 +3868,14 @@
 
     "react-native/ws": ["ws@6.2.3", "", { "dependencies": { "async-limiter": "~1.0.0" } }, "sha512-jmTjYU0j60B+vHey6TfR3Z7RD61z/hmxBS3VMSGIrroOWXQEneK1zNuotOUrGyBHQj0yrpsLHPWtigEFd13ndA=="],
 
+    "react-remove-scroll/tslib": ["tslib@2.8.1", "", {}, ""],
+
+    "react-remove-scroll-bar/tslib": ["tslib@2.8.1", "", {}, ""],
+
+    "react-style-singleton/tslib": ["tslib@2.8.1", "", {}, ""],
+
+    "recast/tslib": ["tslib@2.8.1", "", {}, ""],
+
     "restore-cursor/onetime": ["onetime@5.1.2", "", { "dependencies": { "mimic-fn": "^2.1.0" } }, ""],
 
     "ripple-keypairs/@noble/curves": ["@noble/curves@1.8.2", "", { "dependencies": { "@noble/hashes": "1.7.2" } }, "sha512-vnI7V6lFNe0tLAuJMu+2sX+FcL14TaCWy1qiczg1VwRmPrpQCdq5ESXQMqUc2tluRNf6irBXrWbl1mGN8uaU/g=="],
@@ -3857,6 +3885,8 @@
     "rpc-websockets/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
 
     "rpc-websockets/ws": ["ws@8.18.1", "", { "peerDependencies": { "bufferutil": "^4.0.1", "utf-8-validate": ">=5.0.2" } }, ""],
+
+    "rxjs/tslib": ["tslib@2.8.1", "", {}, ""],
 
     "send/debug": ["debug@2.6.9", "", { "dependencies": { "ms": "2.0.0" } }, ""],
 
@@ -3930,6 +3960,10 @@
 
     "usb/node-addon-api": ["node-addon-api@8.3.1", "", {}, "sha512-lytcDEdxKjGJPTLEfW4mYMigRezMlyJY8W4wxJK8zE533Jlb8L8dRuObJFWg2P+AuOIxoCgKF+2Oq4d4Zd0OUA=="],
 
+    "use-callback-ref/tslib": ["tslib@2.8.1", "", {}, ""],
+
+    "use-sidecar/tslib": ["tslib@2.8.1", "", {}, ""],
+
     "valtio/use-sync-external-store": ["use-sync-external-store@1.2.0", "", { "peerDependencies": { "react": "^16.8.0 || ^17.0.0 || ^18.0.0" } }, "sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA=="],
 
     "viem/@noble/curves": ["@noble/curves@1.8.2", "", { "dependencies": { "@noble/hashes": "1.7.2" } }, "sha512-vnI7V6lFNe0tLAuJMu+2sX+FcL14TaCWy1qiczg1VwRmPrpQCdq5ESXQMqUc2tluRNf6irBXrWbl1mGN8uaU/g=="],
@@ -3973,6 +4007,8 @@
     "@istanbuljs/load-nyc-config/find-up/locate-path": ["locate-path@5.0.0", "", { "dependencies": { "p-locate": "^4.1.0" } }, "sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g=="],
 
     "@istanbuljs/load-nyc-config/js-yaml/argparse": ["argparse@1.0.10", "", { "dependencies": { "sprintf-js": "~1.0.2" } }, "sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg=="],
+
+    "@keystonehq/bc-ur-registry-sol/@keystonehq/bc-ur-registry/tslib": ["tslib@2.8.1", "", {}, ""],
 
     "@keystonehq/sdk/rxjs/tslib": ["tslib@1.14.1", "", {}, ""],
 
@@ -4086,6 +4122,8 @@
 
     "connect/finalhandler/statuses": ["statuses@1.5.0", "", {}, ""],
 
+    "degenerator/ast-types/tslib": ["tslib@2.8.1", "", {}, ""],
+
     "electron-winstaller/fs-extra/jsonfile": ["jsonfile@4.0.0", "", { "optionalDependencies": { "graceful-fs": "^4.1.6" } }, ""],
 
     "electron-winstaller/fs-extra/universalify": ["universalify@0.1.2", "", {}, ""],
@@ -4161,6 +4199,8 @@
     "shadcn/fast-glob/glob-parent": ["glob-parent@5.1.2", "", { "dependencies": { "is-glob": "^4.0.1" } }, ""],
 
     "snakecase-keys/snake-case/dot-case": ["dot-case@3.0.4", "", { "dependencies": { "no-case": "^3.0.4", "tslib": "^2.0.3" } }, ""],
+
+    "snakecase-keys/snake-case/tslib": ["tslib@2.8.1", "", {}, ""],
 
     "wif/bs58check/@noble/hashes": ["@noble/hashes@1.7.2", "", {}, "sha512-biZ0NUSxyjLLqo6KxEJ1b+C2NAx0wtDoFvCaXHGgUkeHzf3Xc1xKumFKREuT7f7DARNZ/slvYUwFG6B0f2b6hQ=="],
 

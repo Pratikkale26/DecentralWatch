@@ -10,6 +10,10 @@ import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@cl
 import { WalletDisconnectButton, WalletMultiButton } from "@solana/wallet-adapter-react-ui"
 import '@solana/wallet-adapter-react-ui/styles.css';
 import { useWallet } from '@solana/wallet-adapter-react';
+import axios from "axios"
+import { useAuth } from "@clerk/nextjs";
+import { useUser } from '@clerk/nextjs';
+
 
 const NavLinks = ({ onClick }: { onClick?: () => void }) => (
   <>
@@ -30,7 +34,13 @@ export function Header() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const {publicKey} = useWallet()
+  const {publicKey, signMessage} = useWallet()
+  const {getToken} = useAuth();
+  const user = useUser()?.user
+
+  const name = user?.fullName
+  const email = user?.primaryEmailAddress?.emailAddress
+  // console.log(name, email)
 
 
   useEffect(() => {
@@ -38,6 +48,36 @@ export function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  async function handleSignMessageAndSend() {
+    const message = new TextEncoder().encode("Sign in into DecentralWatch");
+    const signature = await signMessage?.(message)
+    const token = await getToken();
+    if (!token) {
+      console.error("No Clerk JWT found.");
+      return;
+    }
+
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BACKEND_URL}/api/v1/link-wallet`, {
+      signature,
+      publicKey: publicKey?.toBase58(),
+      name: name,
+      email: email
+    }, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    if (res.status === 200) {
+      console.log(res.data)
+    }
+  }
+
+  useEffect(() => {
+    handleSignMessageAndSend();
+  }, [publicKey])
 
   return (
     <header
@@ -65,7 +105,7 @@ export function Header() {
           <ThemeToggle />
           {pathname === "/" && (
             <Button asChild size="sm" className="hidden sm:inline-flex">
-              <Link href="#join">Join as Validator</Link>
+              <Link href="#join">Join as Validator</Link> 
             </Button>
           )}
           <SignedOut>
