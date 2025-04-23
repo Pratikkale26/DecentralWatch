@@ -36,18 +36,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const {publicKey, signMessage} = useWallet()
   const {getToken} = useAuth();
-  const user = useUser()?.user
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-
-  
-  useEffect(() => {  
-    if (user) {
-      setName(user?.fullName || '');
-      setEmail(user?.primaryEmailAddress?.emailAddress || '');
-    }
-  }, [user]);
-  // console.log(name, email)
+  const { user } = useUser();
 
 
   useEffect(() => {
@@ -68,8 +57,8 @@ export function Header() {
     const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BACKEND_URL}/api/v1/link-wallet`, {
       signature,
       publicKey: publicKey?.toBase58(),
-      name: name,
-      email: email
+      name: user?.fullName || user?.username || '',
+      email: user?.emailAddresses[0]?.emailAddress || '',
     }, {
       headers: {
         "Content-Type": "application/json",

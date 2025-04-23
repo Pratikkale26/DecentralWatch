@@ -65,3 +65,11 @@ enum TransactionStatus {
   Success
   Failure
 }
+
+model notification {
+  id        String @id @default(uuid())
+  userId    String
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

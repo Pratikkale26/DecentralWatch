@@ -165,9 +165,58 @@ app.use(async (req, res, next) => {
             }
         })
     }
+    // if websites got disable only then send notification
+
+    // save notification
+    if(websites.length > 0) {
+        const users = await prismaClient.user.findMany({
+            where: {
+                id: {
+                    in: websites.map(website => website.userId)
+                }
+            }
+        })
+        for (const user of users) {
+            await prismaClient.notification.create({
+                data: {
+                    userId: user.id,
+                    message: `Your website ${websites.map(website => website.url)} is disabled because it has expired.`
+                }
+            })
+        }
+            }
+    console.log(`Disabled ${websites.length} websites with url ${websites.map(website => website.url)}`);
     next();
 })
 
+// get disabled website and user email
+app.use(async (req, res, next) => {
+    const now = new Date();
+    const websites = await prismaClient.website.findMany({
+      where: {
+        disabled: true,
+        expiry: {
+          lte: now
+        }
+      }
+    });
+  
+    for (const website of websites) {
+      const user = await prismaClient.user.findUnique({
+        where: { id: website.userId }
+      });
+  
+      if (!user?.email) {
+        console.log(`Email not found for user ${website.userId}, skipping.`);
+        continue;
+      }
+  
+      console.log(`Website ${website.url} is disabled for user ${user.email}, at ${website.expiry}.`);
+    }
+  
+    next();
+  });
+  
 
 // link wallet
 app.post("/api/v1/link-wallet", authMiddleware, async (req, res) => {
