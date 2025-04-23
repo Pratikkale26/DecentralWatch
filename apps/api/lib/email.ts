@@ -1,18 +1,18 @@
-import nodemailer from "nodemailer";
+import { resend } from "../utils/resendClient";
 
-export const sendEmail = async ({ to, subject, text }: { to: string; subject: string; text: string }) => {
-  const transporter = nodemailer.createTransport({
-    service: "gmail", // todo: Resend
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
-  });
+export const sendEmail = async ({ to, subject, text }: {
+  to: string;
+  subject: string;
+  text: string;
+}) => {
+  if (!text) {
+    throw new Error("Text content must be provided.");
+  }
 
-  await transporter.sendMail({
-    from: process.env.EMAIL_USER,
+  await resend.emails.send({
+    from: "DecentralWatch <noreply@decentralwatch.kalehub.com>",
     to,
     subject,
-    text
+    text,
   });
 };
