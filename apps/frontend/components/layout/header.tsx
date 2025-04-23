@@ -37,9 +37,16 @@ export function Header() {
   const {publicKey, signMessage} = useWallet()
   const {getToken} = useAuth();
   const user = useUser()?.user
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
-  const name = user?.fullName
-  const email = user?.primaryEmailAddress?.emailAddress
+  
+  useEffect(() => {  
+    if (user) {
+      setName(user?.fullName || '');
+      setEmail(user?.primaryEmailAddress?.emailAddress || '');
+    }
+  }, [user]);
   // console.log(name, email)
 
 

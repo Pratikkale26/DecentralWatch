@@ -248,7 +248,7 @@ function AddWebsiteModal({ isOpen, onClose, onAdd }: AddWebsiteModalProps) {
   const [txSignature, setTxSignature] = useState("");
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
-
+  const [waiting, setWaiting] = useState(false);
 
 
   if (!isOpen) return null;
@@ -263,27 +263,58 @@ function AddWebsiteModal({ isOpen, onClose, onAdd }: AddWebsiteModalProps) {
   };
 
   async function makePayment() {
-
-    const transaction = new Transaction().add(
+    if (!publicKey) return alert("Wallet not connected");
+  
+    setWaiting(true);
+  
+    try {
+      const transaction = new Transaction().add(
         SystemProgram.transfer({
-            fromPubkey: publicKey!,
-            toPubkey: new PublicKey("7m6ah1RGoYzLD65FHGbyXJffP9hPEZzh6e6HmAzGpVt9"),
-            lamports: 100000000,
+          fromPubkey: publicKey,
+          toPubkey: new PublicKey("7m6ah1RGoYzLD65FHGbyXJffP9hPEZzh6e6HmAzGpVt9"),
+          lamports: 100_000_000,
         })
-    );
-
-    const {
+      );
+  
+      const {
         context: { slot: minContextSlot },
-        value: { blockhash, lastValidBlockHeight }
-    } = await connection.getLatestBlockhashAndContext();
+        value: { blockhash, lastValidBlockHeight },
+      } = await connection.getLatestBlockhashAndContext();
+  
+      const signature = await sendTransaction(transaction, connection, {
+        minContextSlot,
+      });
+  
+      console.log("Transaction signature:", signature);
+  
+      const confirmation = await connection.confirmTransaction(
+        {
+          blockhash,
+          lastValidBlockHeight,
+          signature,
+        },
+        "finalized"
+      );
+  
+      if (confirmation.value.err) {
+        console.error("Transaction failed:", confirmation.value.err);
+        alert("Transaction failed, please try again.");
+        setWaiting(false);
+        return;
+      }
+  
+      setTxSignature(signature); // Only set it after full confirmation
 
-    const signature = await sendTransaction(transaction, connection, { minContextSlot });
-
-    await connection.confirmTransaction({ blockhash, lastValidBlockHeight, signature });
-    setTxSignature(signature);
-    console.log(signature.toString());
-}
-
+      console.log("Transaction confirmed:", signature);
+    } catch (err) {
+      console.error("Payment error:", err);
+      alert("Payment failed. Please try again.");
+    } finally {
+      setWaiting(false);
+    }
+  }
+  
+  
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div className="bg-white rounded-lg p-6 w-full max-w-md">
@@ -319,11 +350,11 @@ function AddWebsiteModal({ isOpen, onClose, onAdd }: AddWebsiteModalProps) {
               >
                 Cancel
               </button>
-              <button onClick={txSignature ? handleSubmit : makePayment}
+              <button onClick={txSignature && !waiting ? handleSubmit : makePayment}
                 type="button"
                 className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
-                {txSignature ? "Add Website" : "Pay 0.1 SOL"}
+              {waiting ? "Processing..." : txSignature ? "Add Website" : "Pay 0.1 SOL"}
               </button>
             </div>
           </div>

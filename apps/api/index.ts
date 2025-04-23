@@ -26,10 +26,11 @@ app.post("/api/v1/website", authMiddleware, async (req, res) => {
     })
 
     const transaction = await connection.getTransaction(txSignature, {
-        maxSupportedTransactionVersion: 1
+        maxSupportedTransactionVersion: 1,
+        commitment: "confirmed"
     });
 
-    console.log(transaction);    
+    // console.log(transaction);    
 
     // // check if the transaction is valid
     if ((transaction?.meta?.postBalances[1] ?? 0) - (transaction?.meta?.preBalances[1] ?? 0) !== 100000000) {
@@ -62,7 +63,8 @@ app.post("/api/v1/website", authMiddleware, async (req, res) => {
         data: {
             userId,
             url,
-            expiry: expiryDate
+            expiry: expiryDate,
+            signature: txSignature
         }
     })
 
