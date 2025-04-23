@@ -4,3 +4,6 @@ declare namespace Express {
         userId?: string;
     }
 }
+
+declare module 'node-cron';
+declare module 'nodemailer';
