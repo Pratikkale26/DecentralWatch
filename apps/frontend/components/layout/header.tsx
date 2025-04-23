@@ -36,8 +36,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const {publicKey, signMessage} = useWallet()
   const {getToken} = useAuth();
-  const { user } = useUser();
-
+  const { user, isLoaded} = useUser();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
@@ -45,35 +44,39 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  async function handleSignMessageAndSend() {
-    const message = new TextEncoder().encode("Sign in into DecentralWatch");
-    const signature = await signMessage?.(message)
-    const token = await getToken();
-    if (!token) {
-      console.error("No Clerk JWT found.");
-      return;
-    }
-
-    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BACKEND_URL}/api/v1/link-wallet`, {
-      signature,
-      publicKey: publicKey?.toBase58(),
-      name: user?.fullName || user?.username || '',
-      email: user?.emailAddresses[0]?.emailAddress || '',
-    }, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-
-    if (res.status === 200) {
-      console.log(res.data)
-    }
-  }
-
   useEffect(() => {
-    handleSignMessageAndSend();
-  }, [publicKey])
+    const handleSignMessageAndSend = async () => {
+      const message = new TextEncoder().encode("Sign in into DecentralWatch");
+      const signature = await signMessage?.(message);
+      const token = await getToken();
+      
+      if (!token || !signature || !publicKey) {
+        console.error("Missing token, signature, or publicKey.");
+        return;
+      }
+  
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BACKEND_URL}/api/v1/link-wallet`, {
+        signature,
+        publicKey: publicKey.toBase58(),
+        name: user?.fullName || user?.username || '',
+        email: user?.emailAddresses[0]?.emailAddress || '',
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      if (res.status === 200) {
+        console.log(res.data);
+      }
+    };
+  
+    if (isLoaded && publicKey) {
+      handleSignMessageAndSend();
+    }
+  }, [isLoaded, publicKey]);
+  
 
   return (
     <header

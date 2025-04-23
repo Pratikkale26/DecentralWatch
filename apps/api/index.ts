@@ -10,7 +10,9 @@ app.use(express.json());
 app.use(cors());
 
 // Auto-disable expired websites
+console.log("starting cron job")
 scheduleWebsiteAutoDisable();
+console.log("started cron job")
 
 // Routes
 app.use("/api/v1", authMiddleware, websiteRoutes);
