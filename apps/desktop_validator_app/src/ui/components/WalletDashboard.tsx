@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 function WalletDashboard() {
   const [pubKey, setPubKey] = useState<string | null>(null);
   const [balance, setBalance] = useState<number>(0);
-  const [pendingPayout, setPendingPayout] = useState<number>(0.1); // hardcoded example
   const [receiver, setReceiver] = useState('');
   const [amount, setAmount] = useState('');
   const [status, setStatus] = useState<string | null>(null);
@@ -21,14 +20,7 @@ function WalletDashboard() {
   }, []);
 
   const handleClaim = async () => {
-    try {
-      await window.electron.claimReward(); // implement this in preload/backend
-      setPendingPayout(0);
-      setStatus('✅ Payout claimed successfully!');
-    } catch (err) {
-      setStatus('❌ Failed to claim payout.');
-      console.log(err);
-    }
+    setStatus('✅ Payout happens on 1st of the next month.');
   };
 
   const handleSend = async () => {
@@ -64,12 +56,12 @@ function WalletDashboard() {
 
         <div className="bg-gray-800 p-5 rounded-xl space-y-3 border border-gray-700">
           <h2 className="text-lg font-semibold text-yellow-400">🟡 Earned Rewards</h2>
-          <p className="text-2xl">{pendingPayout} SOL</p>
+          <p className="text-2xl">... SOL</p>
           <button
             onClick={handleClaim}
             className="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-lg font-semibold transition"
           >
-            Claim Now
+            Claim Rewards
           </button>
         </div>
 

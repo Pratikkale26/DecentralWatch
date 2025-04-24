@@ -4,6 +4,7 @@ import { authMiddleware } from "./middleware/middleware";
 import websiteRoutes from "./routes/websiteRoutes";
 import userRoutes from "./routes/userRoutes";
 import {scheduleWebsiteAutoDisable} from "./cron/autoDisableWebsites";
+import { payoutValidators } from "./cron/payout";
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use(cors());
 // Auto-disable expired websites
 console.log("starting cron job")
 scheduleWebsiteAutoDisable();
+payoutValidators();
 console.log("started cron job")
 
 // Routes

@@ -21,7 +21,6 @@
         "jsonwebtoken": "^9.0.2",
         "jwt": "^0.2.0",
         "node-cron": "^3.0.3",
-        "nodemailer": "^6.10.1",
         "resend": "^4.4.0",
       },
       "devDependencies": {
@@ -2572,8 +2571,6 @@
     "node-plop": ["node-plop@0.26.3", "", { "dependencies": { "@babel/runtime-corejs3": "^7.9.2", "@types/inquirer": "^6.5.0", "change-case": "^3.1.0", "del": "^5.1.0", "globby": "^10.0.1", "handlebars": "^4.4.3", "inquirer": "^7.1.0", "isbinaryfile": "^4.0.2", "lodash.get": "^4.4.2", "mkdirp": "^0.5.1", "resolve": "^1.12.0" } }, ""],
 
     "node-releases": ["node-releases@2.0.19", "", {}, ""],
-
-    "nodemailer": ["nodemailer@6.10.1", "", {}, "sha512-Z+iLaBGVaSjbIzQ4pX6XV41HrooLsQ10ZWPUehGmuantvzWoDVBnmsdUcOIDM1t+yPor5pDhVlDESgOMEGxhHA=="],
 
     "nopt": ["nopt@6.0.0", "", { "dependencies": { "abbrev": "^1.0.0" }, "bin": "bin/nopt.js" }, ""],
 

@@ -26,7 +26,7 @@ model Website {
 
 model Validator {
   id              String        @id @default(uuid())
-  publicKey       String        
+  publicKey       String        @unique
   location        String
   ip              String
   pendingPayouts  Int           @default(0)
