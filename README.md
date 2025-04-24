@@ -24,15 +24,28 @@ DecentralWatch is a **decentralized uptime monitoring platform** where validator
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** Next.js, TypeScript, Tailwind CSS
-- **Backend:** Node.js, Express, PostgreSQL
+- **Frontend:** Next.js, Electron, TypeScript, Tailwind CSS
+- **Backend:** Node.js, Express, PostgreSQL, Bun
 - **Blockchain:** Solana
-- **Storage:** IPFS / Decentralized Databases
 - **Real-Time:** WebSockets
+
+## 📦 Monorepo Structure
+```
+apps/
+  ├── api/               # Express backend API
+  ├── frontend/          # User-facing web app (Next.js)
+  ├── hub/               # Admin dashboard or monitoring hub
+  ├── validator/         # Validator service for uptime checks
+  ├── electron-app/      # Desktop app for validators
+
+packages/
+  ├── db/                # Prisma ORM schema and database access
+  ├── common/            # Shared types, utils, constants
+```
 
 ## 📬 Stay Connected
 
-- Website: [DecentralWatch.com](https://DecentralWatch.kalehub.com)
+- Website: [DecentralWatch.com](https://Watch.kalehub.com)
 - Twitter: [@PratikKale26](https://x.com/pratikkale26)
 - LinkedIn: [Pratik Kale](https://www.linkedin.com/in/pratikkale26/)
 
