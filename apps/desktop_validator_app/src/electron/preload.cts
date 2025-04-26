@@ -34,7 +34,13 @@ contextBridge.exposeInMainWorld('electron', {
     return new Promise<string>((resolve) => {
       ipcRenderer.once('sendSol', (_event, res) => resolve(res));
     })
-    
-  }
+  },
+
+  getPrivateKey: () => {
+    ipcRenderer.send('getPrivateKey');
+    return new Promise<string>((resolve) => {
+      ipcRenderer.once('gotPrivateKey', (_event, privateKey) => resolve(privateKey));
+    });
+  },
 
 });

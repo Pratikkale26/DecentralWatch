@@ -2,7 +2,7 @@ import { app, BrowserWindow } from 'electron';
 import path from 'path';
 import { isDev } from './util.js';
 import { getPreloadPath } from './pathResolver.js';
-import { createAndStoreWallet, getBalance, getPubKey, loadWallet, restoreWallet, sendSol } from './controller/wallet/wallet.js';
+import { createAndStoreWallet, getBalance, getPrivateKey, getPubKey, loadWallet, restoreWallet, sendSol } from './controller/wallet/wallet.js';
 import { ipcMain } from 'electron';
 import { startValidator } from './controller/validator.js';
 
@@ -45,6 +45,12 @@ app.on('ready', () => {
   ipcMain.on('sendSol', async (event, receiver, amount) => {
     const res = await sendSol(receiver, amount);
     event.reply('sendSol', res);
+  })
+
+  // get private key
+  ipcMain.on('getPrivateKey', async (event) => {
+    const privateKey = await getPrivateKey();
+    event.reply('gotPrivateKey', privateKey);
   })
 
 

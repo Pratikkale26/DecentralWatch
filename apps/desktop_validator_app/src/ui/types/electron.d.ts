@@ -3,8 +3,8 @@ export interface ElectronAPI {
     getPubKey: () => Promise<string | null>;
     restoreWallet: (seedPhrase: string) => Promise<string>;
     getBalance: () => Promise<number>;
-    claimReward: () => Promise<void>; // Todo: impliment in electron 
     sendSol: (receiver: string, amount: number) => Promise<string | null>;
+    getPrivateKey: () => Promise<string | null>;
   }
   
   declare global {

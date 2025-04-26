@@ -31,6 +31,14 @@ export const loadWallet = async () => {
   return keypair;
 };
 
+// get private key
+export const getPrivateKey = async () => {
+  const keypair = await loadWallet();
+  if (!keypair) return null;
+  const secretKeyArray = Array.from(keypair.secretKey);  // Full 64 bytes
+  return JSON.stringify(secretKeyArray);
+};
+
 // get PubKey
 export const getPubKey = async () => {
   const keypair = await loadWallet();
