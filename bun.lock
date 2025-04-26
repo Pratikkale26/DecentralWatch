@@ -62,6 +62,31 @@
         "vite": "^6.2.0",
       },
     },
+    "apps/explorer": {
+      "name": "explorer",
+      "version": "0.0.0",
+      "dependencies": {
+        "@solana/wallet-adapter-react": "^0.15.38",
+        "@solana/wallet-adapter-react-ui": "^0.9.38",
+        "@tailwindcss/vite": "^4.1.4",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "tailwindcss": "^4.1.4",
+      },
+      "devDependencies": {
+        "@eslint/js": "^9.22.0",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
+        "@vitejs/plugin-react": "^4.3.4",
+        "eslint": "^9.22.0",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "eslint-plugin-react-refresh": "^0.4.19",
+        "globals": "^16.0.0",
+        "typescript": "~5.7.2",
+        "typescript-eslint": "^8.26.1",
+        "vite": "^6.3.1",
+      },
+    },
     "apps/frontend": {
       "name": "frontend",
       "version": "0.1.0",
@@ -854,9 +879,9 @@
 
     "@solana/wallet-adapter-avana": ["@solana/wallet-adapter-avana@0.1.15", "", { "dependencies": { "@solana/wallet-adapter-base": "^0.9.25" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-0ruF4MxX2M3Fe4ApG7rQ/EmEBr2M/9zAvoN/+CtuXjO2gfcgyqc34RSRpdRljQkWgSrzUCZIvVxgNhm9PuKFog=="],
 
-    "@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+    "@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.26", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-1RcmfesJ8bTT+zfg4w+Z+wisj11HR+vWwl/pS6v/zwQPe0LSzWDpkXRv9JuDSCuTcmlglEfjEqFAW+5EubK/Jg=="],
 
-    "@solana/wallet-adapter-base-ui": ["@solana/wallet-adapter-base-ui@0.1.4", "", { "dependencies": { "@solana/wallet-adapter-react": "^0.15.37" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*" } }, "sha512-lI+lfwPypqxanZJBvSd4ryPng0UfP9fxbD4Yj0KKLyUu0Pfl2HkDg+eMWC32Tz5qKTaQjExD3kuXiopRzF8ZvQ=="],
+    "@solana/wallet-adapter-base-ui": ["@solana/wallet-adapter-base-ui@0.1.5", "", { "dependencies": { "@solana/wallet-adapter-react": "^0.15.38" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*" } }, "sha512-ho9YrZyMypFMq7o0mceaJZHwH9drj1Gvh+xFeictzhaEU8IVKx8mp5LqlQklHDjzwh8GfbLiZsGh9Om/uJ/YBg=="],
 
     "@solana/wallet-adapter-bitkeep": ["@solana/wallet-adapter-bitkeep@0.3.22", "", { "dependencies": { "@solana/wallet-adapter-base": "^0.9.25" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-ov537O8zcK2LgknfWXpaoh2r76dc6YeeHdF+3l+JIuGXYfDzYdB7N1hRabPEIUhOfDTKyXbdqFRWmCQYdiQa2Q=="],
 
@@ -896,9 +921,9 @@
 
     "@solana/wallet-adapter-phantom": ["@solana/wallet-adapter-phantom@0.9.26", "", { "dependencies": { "@solana/wallet-adapter-base": "^0.9.25" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-KjWMDRFcTjfkiOK8A5XDXbOWj3sHzuFA0Hyxl+VNGMv+AlzZ8vnuSViwP8DBhdeR1wdZ12fTyri82+RzR3f8cg=="],
 
-    "@solana/wallet-adapter-react": ["@solana/wallet-adapter-react@0.15.37", "", { "dependencies": { "@solana-mobile/wallet-adapter-mobile": "^2.1.5", "@solana/wallet-adapter-base": "^0.9.25", "@solana/wallet-standard-wallet-adapter-react": "^1.1.4" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*" } }, "sha512-lWlvA4I5aAJgcd7gyq+xlz4KIjxnMWept1DabKumQmBARaUiROnN8Ib/qp0MlrSov+zsHCSHSJzSzUtgNjvyXA=="],
+    "@solana/wallet-adapter-react": ["@solana/wallet-adapter-react@0.15.38", "", { "dependencies": { "@solana-mobile/wallet-adapter-mobile": "^2.1.5", "@solana/wallet-adapter-base": "^0.9.26", "@solana/wallet-standard-wallet-adapter-react": "^1.1.4" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*" } }, "sha512-BFyYigdnEb45+HNoqNHh2GNIsUJyLBnD76SXW7KXt+lheCkh2wzRqWYnRtG1yTVrLbf09fs/z3eWOc0RYCO5aA=="],
 
-    "@solana/wallet-adapter-react-ui": ["@solana/wallet-adapter-react-ui@0.9.37", "", { "dependencies": { "@solana/wallet-adapter-base": "^0.9.25", "@solana/wallet-adapter-base-ui": "^0.1.4", "@solana/wallet-adapter-react": "^0.15.37" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*", "react-dom": "*" } }, "sha512-oEX/lU0Fdb6oWyU4sQ/UqIxqpHIcgb/zeNrtwPMX/6vrrc9V4Ur7wf0zTGr7tlP4hLD3Uk/cLvgwBds1WrDZrQ=="],
+    "@solana/wallet-adapter-react-ui": ["@solana/wallet-adapter-react-ui@0.9.38", "", { "dependencies": { "@solana/wallet-adapter-base": "^0.9.26", "@solana/wallet-adapter-base-ui": "^0.1.5", "@solana/wallet-adapter-react": "^0.15.38" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*", "react-dom": "*" } }, "sha512-TqdXhyD4SxN1vi/hEVILfyEvDWisrs0JP3fDFUTSH+4gVdqBxKAixhpa/ZFkZGtHhKQd4S13MnY7Exh745Mzgw=="],
 
     "@solana/wallet-adapter-safepal": ["@solana/wallet-adapter-safepal@0.5.20", "", { "dependencies": { "@solana/wallet-adapter-base": "^0.9.25" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-d71DFi3+4jwNDXHEqNtSq13LKHyVgaoNCcxfEgR7CvtYrENu+bGoJGFfUnJcgVIf/EwOPJd6LTIZpvQBKY0sCA=="],
 
@@ -1894,6 +1919,8 @@
 
     "expand-template": ["expand-template@2.0.3", "", {}, ""],
 
+    "explorer": ["explorer@workspace:apps/explorer"],
+
     "exponential-backoff": ["exponential-backoff@3.1.2", "", {}, ""],
 
     "express": ["express@4.21.2", "", { "dependencies": { "accepts": "~1.3.8", "array-flatten": "1.1.1", "body-parser": "1.20.3", "content-disposition": "0.5.4", "content-type": "~1.0.4", "cookie": "0.7.1", "cookie-signature": "1.0.6", "debug": "2.6.9", "depd": "2.0.0", "encodeurl": "~2.0.0", "escape-html": "~1.0.3", "etag": "~1.8.1", "finalhandler": "1.3.1", "fresh": "0.5.2", "http-errors": "2.0.0", "merge-descriptors": "1.0.3", "methods": "~1.1.2", "on-finished": "2.4.1", "parseurl": "~1.3.3", "path-to-regexp": "0.1.12", "proxy-addr": "~2.0.7", "qs": "6.13.0", "range-parser": "~1.2.1", "safe-buffer": "5.2.1", "send": "0.19.0", "serve-static": "1.16.2", "setprototypeof": "1.2.0", "statuses": "2.0.1", "type-is": "~1.6.18", "utils-merge": "1.0.1", "vary": "~1.1.2" } }, ""],
@@ -1928,7 +1955,7 @@
 
     "fd-slicer": ["fd-slicer@1.1.0", "", { "dependencies": { "pend": "~1.2.0" } }, ""],
 
-    "fdir": ["fdir@6.4.3", "", { "peerDependencies": { "picomatch": "^3 || ^4" } }, ""],
+    "fdir": ["fdir@6.4.4", "", { "peerDependencies": { "picomatch": "^3 || ^4" }, "optionalPeers": ["picomatch"] }, "sha512-1NZP+GK4GfuAv3PqKvxQRDMjdSRZjnkq7KfhlNrCNNlZ0ygQFpebfrnfnq/W7fpUnAv9aGWmY1zKx7FYL3gwhg=="],
 
     "fetch-blob": ["fetch-blob@3.2.0", "", { "dependencies": { "node-domexception": "^1.0.0", "web-streams-polyfill": "^3.0.3" } }, ""],
 
@@ -2692,7 +2719,7 @@
 
     "picocolors": ["picocolors@1.0.1", "", {}, ""],
 
-    "picomatch": ["picomatch@2.3.1", "", {}, ""],
+    "picomatch": ["picomatch@4.0.2", "", {}, ""],
 
     "pidtree": ["pidtree@0.3.1", "", { "bin": "bin/pidtree.js" }, ""],
 
@@ -3144,7 +3171,7 @@
 
     "tinycolor2": ["tinycolor2@1.6.0", "", {}, ""],
 
-    "tinyglobby": ["tinyglobby@0.2.12", "", { "dependencies": { "fdir": "^6.4.3", "picomatch": "^4.0.2" } }, ""],
+    "tinyglobby": ["tinyglobby@0.2.13", "", { "dependencies": { "fdir": "^6.4.4", "picomatch": "^4.0.2" } }, "sha512-mEwzpUgrLySlveBwEVDMKk5B57bhLPYovRfPAXD5gA/98Opn0rCDj3GtLwFvCvH5RK9uPCExUROW5NjDwvqkxw=="],
 
     "tinygradient": ["tinygradient@1.1.5", "", { "dependencies": { "@types/tinycolor2": "^1.4.0", "tinycolor2": "^1.0.0" } }, ""],
 
@@ -3432,6 +3459,8 @@
 
     "@eslint/eslintrc/globals": ["globals@14.0.0", "", {}, ""],
 
+    "@fractalwagmi/solana-wallet-adapter/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
     "@fractalwagmi/solana-wallet-adapter/bs58": ["bs58@5.0.0", "", { "dependencies": { "base-x": "^4.0.0" } }, "sha512-r+ihvQJvahgYT50JD05dyJNKlmmSlMoOGwn1lCcEzanPglg7TxYjioQUYehQ9mAR/+hOSd2jRc/Z2y5UxBymvQ=="],
 
     "@humanfs/node/@humanwhocodes/retry": ["@humanwhocodes/retry@0.3.1", "", {}, ""],
@@ -3508,6 +3537,8 @@
 
     "@solana-mobile/mobile-wallet-adapter-protocol-web3js/bs58": ["bs58@5.0.0", "", { "dependencies": { "base-x": "^4.0.0" } }, "sha512-r+ihvQJvahgYT50JD05dyJNKlmmSlMoOGwn1lCcEzanPglg7TxYjioQUYehQ9mAR/+hOSd2jRc/Z2y5UxBymvQ=="],
 
+    "@solana-mobile/wallet-adapter-mobile/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
     "@solana/errors/chalk": ["chalk@5.4.1", "", {}, ""],
 
     "@solana/errors/commander": ["commander@13.1.0", "", {}, ""],
@@ -3516,7 +3547,81 @@
 
     "@solana/rpc-transport-http/undici-types": ["undici-types@7.7.0", "", {}, ""],
 
+    "@solana/wallet-adapter-alpha/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-avana/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
     "@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-bitkeep/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-bitpie/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-clover/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-coin98/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-coinbase/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-coinhub/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-fractal/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-huobi/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-hyperpay/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-keystone/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-krystal/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-ledger/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-mathwallet/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-neko/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-nightly/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-nufi/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-onto/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-particle/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-phantom/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-safepal/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-saifu/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-salmon/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-sky/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-solflare/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-solong/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-spot/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-tokenary/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-tokenpocket/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-torus/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-trezor/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-trust/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-unsafe-burner/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-walletconnect/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-adapter-xdefi/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "@solana/wallet-standard-wallet-adapter-base/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
 
     "@solana/web3.js/bs58": ["bs58@4.0.1", "", { "dependencies": { "base-x": "^3.0.2" } }, ""],
 
@@ -3622,6 +3727,8 @@
 
     "ansi-escapes/type-fest": ["type-fest@0.21.3", "", {}, ""],
 
+    "anymatch/picomatch": ["picomatch@2.3.1", "", {}, ""],
+
     "app-builder-lib/dotenv": ["dotenv@16.4.7", "", {}, ""],
 
     "app-builder-lib/isbinaryfile": ["isbinaryfile@5.0.4", "", {}, ""],
@@ -3720,6 +3827,8 @@
 
     "eslint-import-resolver-node/resolve": ["resolve@1.22.10", "", { "dependencies": { "is-core-module": "^2.16.0", "path-parse": "^1.0.7", "supports-preserve-symlinks-flag": "^1.0.0" }, "bin": "bin/resolve" }, ""],
 
+    "eslint-import-resolver-typescript/tinyglobby": ["tinyglobby@0.2.12", "", { "dependencies": { "fdir": "^6.4.3", "picomatch": "^4.0.2" } }, ""],
+
     "eslint-module-utils/debug": ["debug@3.2.7", "", { "dependencies": { "ms": "^2.1.1" } }, ""],
 
     "eslint-plugin-import/debug": ["debug@3.2.7", "", { "dependencies": { "ms": "^2.1.1" } }, ""],
@@ -3736,6 +3845,14 @@
 
     "execa/get-stream": ["get-stream@6.0.1", "", {}, ""],
 
+    "explorer/@types/react": ["@types/react@19.1.0", "", { "dependencies": { "csstype": "^3.0.2" } }, ""],
+
+    "explorer/@types/react-dom": ["@types/react-dom@19.1.1", "", { "peerDependencies": { "@types/react": "^19.0.0" } }, ""],
+
+    "explorer/typescript": ["typescript@5.7.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, ""],
+
+    "explorer/vite": ["vite@6.3.3", "", { "dependencies": { "esbuild": "^0.25.0", "fdir": "^6.4.4", "picomatch": "^4.0.2", "postcss": "^8.5.3", "rollup": "^4.34.9", "tinyglobby": "^0.2.13" }, "optionalDependencies": { "fsevents": "~2.3.3" }, "peerDependencies": { "@types/node": "^18.0.0 || ^20.0.0 || >=22.0.0", "jiti": ">=1.21.0", "less": "*", "lightningcss": "^1.21.0", "sass": "*", "sass-embedded": "*", "stylus": "*", "sugarss": "*", "terser": "^5.16.0", "tsx": "^4.8.1", "yaml": "^2.4.2" }, "optionalPeers": ["@types/node", "jiti", "less", "lightningcss", "sass", "sass-embedded", "stylus", "sugarss", "terser", "tsx", "yaml"], "bin": { "vite": "bin/vite.js" } }, "sha512-5nXH+QsELbFKhsEfWLkHrvgRpTdGJzqOZ+utSdmPTvwHmvU6ITTm3xx+mRusihkcI8GeC7lCDyn3kDtiki9scw=="],
+
     "express/debug": ["debug@2.6.9", "", { "dependencies": { "ms": "2.0.0" } }, ""],
 
     "fast-glob/glob-parent": ["glob-parent@5.1.2", "", { "dependencies": { "is-glob": "^4.0.1" } }, ""],
@@ -3749,6 +3866,10 @@
     "foreground-child/signal-exit": ["signal-exit@4.1.0", "", {}, ""],
 
     "framer-motion/tslib": ["tslib@2.8.1", "", {}, ""],
+
+    "frontend/@solana/wallet-adapter-react": ["@solana/wallet-adapter-react@0.15.37", "", { "dependencies": { "@solana-mobile/wallet-adapter-mobile": "^2.1.5", "@solana/wallet-adapter-base": "^0.9.25", "@solana/wallet-standard-wallet-adapter-react": "^1.1.4" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*" } }, "sha512-lWlvA4I5aAJgcd7gyq+xlz4KIjxnMWept1DabKumQmBARaUiROnN8Ib/qp0MlrSov+zsHCSHSJzSzUtgNjvyXA=="],
+
+    "frontend/@solana/wallet-adapter-react-ui": ["@solana/wallet-adapter-react-ui@0.9.37", "", { "dependencies": { "@solana/wallet-adapter-base": "^0.9.25", "@solana/wallet-adapter-base-ui": "^0.1.4", "@solana/wallet-adapter-react": "^0.15.37" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*", "react-dom": "*" } }, "sha512-oEX/lU0Fdb6oWyU4sQ/UqIxqpHIcgb/zeNrtwPMX/6vrrc9V4Ur7wf0zTGr7tlP4hLD3Uk/cLvgwBds1WrDZrQ=="],
 
     "frontend/@types/node": ["@types/node@20.17.28", "", { "dependencies": { "undici-types": "~6.19.2" } }, ""],
 
@@ -3768,6 +3889,8 @@
 
     "hosted-git-info/lru-cache": ["lru-cache@6.0.0", "", { "dependencies": { "yallist": "^4.0.0" } }, ""],
 
+    "hub/@solana/web3.js": ["@solana/web3.js@1.98.2", "", { "dependencies": { "@babel/runtime": "^7.25.0", "@noble/curves": "^1.4.2", "@noble/hashes": "^1.4.0", "@solana/buffer-layout": "^4.0.1", "@solana/codecs-numbers": "^2.1.0", "agentkeepalive": "^4.5.0", "bn.js": "^5.2.1", "borsh": "^0.7.0", "bs58": "^4.0.1", "buffer": "6.0.3", "fast-stable-stringify": "^1.0.0", "jayson": "^4.1.1", "node-fetch": "^2.7.0", "rpc-websockets": "^9.0.2", "superstruct": "^2.0.2" } }, "sha512-BqVwEG+TaG2yCkBMbD3C4hdpustR4FpuUFRPUmqRZYYlPI9Hg4XMWxHWOWRzHE9Lkc9NDjzXFX7lDXSgzC7R1A=="],
+
     "inquirer/ora": ["ora@5.4.1", "", { "dependencies": { "bl": "^4.1.0", "chalk": "^4.1.0", "cli-cursor": "^3.1.0", "cli-spinners": "^2.5.0", "is-interactive": "^1.0.0", "is-unicode-supported": "^0.1.0", "log-symbols": "^4.1.0", "strip-ansi": "^6.0.0", "wcwidth": "^1.0.1" } }, ""],
 
     "is-bun-module/semver": ["semver@7.7.1", "", { "bin": "bin/semver.js" }, ""],
@@ -3775,6 +3898,8 @@
     "jayson/@types/node": ["@types/node@12.20.55", "", {}, ""],
 
     "jayson/commander": ["commander@2.20.3", "", {}, ""],
+
+    "jest-util/picomatch": ["picomatch@2.3.1", "", {}, ""],
 
     "jest-validate/camelcase": ["camelcase@6.3.0", "", {}, "sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA=="],
 
@@ -3807,6 +3932,8 @@
     "metro-source-map/source-map": ["source-map@0.5.7", "", {}, "sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ=="],
 
     "metro-symbolicate/source-map": ["source-map@0.5.7", "", {}, "sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ=="],
+
+    "micromatch/picomatch": ["picomatch@2.3.1", "", {}, ""],
 
     "miller-rabin/bn.js": ["bn.js@4.12.1", "", {}, "sha512-k8TVBiPkPJT9uHLdOKfFpqcfprwBFOAAXXozRubr7R7PfIuKvQlzcI4M0pALeqXN09vdaMbUdUj+pass+uULAg=="],
 
@@ -3972,8 +4099,6 @@
 
     "tiny-secp256k1/bn.js": ["bn.js@4.12.1", "", {}, "sha512-k8TVBiPkPJT9uHLdOKfFpqcfprwBFOAAXXozRubr7R7PfIuKvQlzcI4M0pALeqXN09vdaMbUdUj+pass+uULAg=="],
 
-    "tinyglobby/picomatch": ["picomatch@4.0.2", "", {}, ""],
-
     "tmp-promise/tmp": ["tmp@0.2.3", "", {}, ""],
 
     "tough-cookie/punycode": ["punycode@2.3.1", "", {}, ""],
@@ -3999,6 +4124,8 @@
     "use-callback-ref/tslib": ["tslib@2.8.1", "", {}, ""],
 
     "use-sidecar/tslib": ["tslib@2.8.1", "", {}, ""],
+
+    "validator/@solana/web3.js": ["@solana/web3.js@1.98.2", "", { "dependencies": { "@babel/runtime": "^7.25.0", "@noble/curves": "^1.4.2", "@noble/hashes": "^1.4.0", "@solana/buffer-layout": "^4.0.1", "@solana/codecs-numbers": "^2.1.0", "agentkeepalive": "^4.5.0", "bn.js": "^5.2.1", "borsh": "^0.7.0", "bs58": "^4.0.1", "buffer": "6.0.3", "fast-stable-stringify": "^1.0.0", "jayson": "^4.1.1", "node-fetch": "^2.7.0", "rpc-websockets": "^9.0.2", "superstruct": "^2.0.2" } }, "sha512-BqVwEG+TaG2yCkBMbD3C4hdpustR4FpuUFRPUmqRZYYlPI9Hg4XMWxHWOWRzHE9Lkc9NDjzXFX7lDXSgzC7R1A=="],
 
     "valtio/use-sync-external-store": ["use-sync-external-store@1.2.0", "", { "peerDependencies": { "react": "^16.8.0 || ^17.0.0 || ^18.0.0" } }, "sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA=="],
 
@@ -4033,6 +4160,8 @@
     "@electron/rebuild/ora/log-symbols": ["log-symbols@4.1.0", "", { "dependencies": { "chalk": "^4.1.0", "is-unicode-supported": "^0.1.0" } }, ""],
 
     "@electron/universal/minimatch/brace-expansion": ["brace-expansion@2.0.1", "", { "dependencies": { "balanced-match": "^1.0.0" } }, ""],
+
+    "@fractalwagmi/solana-wallet-adapter/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
 
     "@fractalwagmi/solana-wallet-adapter/bs58/base-x": ["base-x@4.0.1", "", {}, "sha512-uAZ8x6r6S3aUM9rbHGVOIsR15U/ZSc82b3ymnCPsT45Gk1DDvhDPdIgB5MrhirZWt+5K0EEPQH985kNqZgNPFw=="],
 
@@ -4075,6 +4204,82 @@
     "@reown/appkit/@walletconnect/universal-provider/@walletconnect/utils": ["@walletconnect/utils@2.19.1", "", { "dependencies": { "@noble/ciphers": "1.2.1", "@noble/curves": "1.8.1", "@noble/hashes": "1.7.1", "@walletconnect/jsonrpc-utils": "1.0.8", "@walletconnect/keyvaluestorage": "1.1.1", "@walletconnect/relay-api": "1.0.11", "@walletconnect/relay-auth": "1.1.0", "@walletconnect/safe-json": "1.0.2", "@walletconnect/time": "1.0.2", "@walletconnect/types": "2.19.1", "@walletconnect/window-getters": "1.0.1", "@walletconnect/window-metadata": "1.0.1", "bs58": "6.0.0", "detect-browser": "5.3.0", "elliptic": "6.6.1", "query-string": "7.1.3", "uint8arrays": "3.1.0", "viem": "2.23.2" } }, "sha512-aOwcg+Hpph8niJSXLqkU25pmLR49B8ECXp5gFQDW5IeVgXHoOoK7w8a79GBhIBheMLlIt1322sTKQ7Rq5KzzFg=="],
 
     "@solana-mobile/mobile-wallet-adapter-protocol-web3js/bs58/base-x": ["base-x@4.0.1", "", {}, "sha512-uAZ8x6r6S3aUM9rbHGVOIsR15U/ZSc82b3ymnCPsT45Gk1DDvhDPdIgB5MrhirZWt+5K0EEPQH985kNqZgNPFw=="],
+
+    "@solana-mobile/wallet-adapter-mobile/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-alpha/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-avana/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-bitkeep/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-bitpie/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-clover/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-coin98/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-coinbase/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-coinhub/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-fractal/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-huobi/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-hyperpay/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-keystone/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-krystal/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-ledger/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-mathwallet/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-neko/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-nightly/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-nufi/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-onto/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-particle/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-phantom/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-safepal/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-saifu/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-salmon/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-sky/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-solflare/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-solong/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-spot/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-tokenary/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-tokenpocket/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-torus/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-trezor/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-trust/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-unsafe-burner/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-walletconnect/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-adapter-xdefi/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "@solana/wallet-standard-wallet-adapter-base/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
 
     "@solana/web3.js/bs58/base-x": ["base-x@3.0.11", "", { "dependencies": { "safe-buffer": "^5.0.1" } }, ""],
 
@@ -4164,6 +4369,8 @@
 
     "electron-winstaller/fs-extra/universalify": ["universalify@0.1.2", "", {}, ""],
 
+    "eslint-import-resolver-typescript/tinyglobby/fdir": ["fdir@6.4.3", "", { "peerDependencies": { "picomatch": "^3 || ^4" } }, ""],
+
     "eslint-plugin-import/tsconfig-paths/json5": ["json5@1.0.2", "", { "dependencies": { "minimist": "^1.2.0" }, "bin": "lib/cli.js" }, ""],
 
     "eslint-plugin-import/tsconfig-paths/minimist": ["minimist@1.2.8", "", {}, ""],
@@ -4178,7 +4385,21 @@
 
     "finalhandler/debug/ms": ["ms@2.0.0", "", {}, ""],
 
+    "frontend/@solana/wallet-adapter-react/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "frontend/@solana/wallet-adapter-react-ui/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
+
+    "frontend/@solana/wallet-adapter-react-ui/@solana/wallet-adapter-base-ui": ["@solana/wallet-adapter-base-ui@0.1.4", "", { "dependencies": { "@solana/wallet-adapter-react": "^0.15.37" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*" } }, "sha512-lI+lfwPypqxanZJBvSd4ryPng0UfP9fxbD4Yj0KKLyUu0Pfl2HkDg+eMWC32Tz5qKTaQjExD3kuXiopRzF8ZvQ=="],
+
+    "frontend/@solana/wallet-adapter-react-ui/@solana/wallet-adapter-react": ["@solana/wallet-adapter-react@0.15.37", "", { "dependencies": { "@solana-mobile/wallet-adapter-mobile": "^2.1.5", "@solana/wallet-adapter-base": "^0.9.25", "@solana/wallet-standard-wallet-adapter-react": "^1.1.4" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*" } }, "sha512-lWlvA4I5aAJgcd7gyq+xlz4KIjxnMWept1DabKumQmBARaUiROnN8Ib/qp0MlrSov+zsHCSHSJzSzUtgNjvyXA=="],
+
     "frontend/@types/node/undici-types": ["undici-types@6.19.8", "", {}, ""],
+
+    "hub/@solana/web3.js/@noble/curves": ["@noble/curves@1.8.2", "", { "dependencies": { "@noble/hashes": "1.7.2" } }, "sha512-vnI7V6lFNe0tLAuJMu+2sX+FcL14TaCWy1qiczg1VwRmPrpQCdq5ESXQMqUc2tluRNf6irBXrWbl1mGN8uaU/g=="],
+
+    "hub/@solana/web3.js/@noble/hashes": ["@noble/hashes@1.7.2", "", {}, "sha512-biZ0NUSxyjLLqo6KxEJ1b+C2NAx0wtDoFvCaXHGgUkeHzf3Xc1xKumFKREuT7f7DARNZ/slvYUwFG6B0f2b6hQ=="],
+
+    "hub/@solana/web3.js/bs58": ["bs58@4.0.1", "", { "dependencies": { "base-x": "^3.0.2" } }, ""],
 
     "inquirer/ora/is-interactive": ["is-interactive@1.0.0", "", {}, ""],
 
@@ -4238,6 +4459,12 @@
 
     "snakecase-keys/snake-case/tslib": ["tslib@2.8.1", "", {}, ""],
 
+    "validator/@solana/web3.js/@noble/curves": ["@noble/curves@1.8.2", "", { "dependencies": { "@noble/hashes": "1.7.2" } }, "sha512-vnI7V6lFNe0tLAuJMu+2sX+FcL14TaCWy1qiczg1VwRmPrpQCdq5ESXQMqUc2tluRNf6irBXrWbl1mGN8uaU/g=="],
+
+    "validator/@solana/web3.js/@noble/hashes": ["@noble/hashes@1.7.2", "", {}, "sha512-biZ0NUSxyjLLqo6KxEJ1b+C2NAx0wtDoFvCaXHGgUkeHzf3Xc1xKumFKREuT7f7DARNZ/slvYUwFG6B0f2b6hQ=="],
+
+    "validator/@solana/web3.js/bs58": ["bs58@4.0.1", "", { "dependencies": { "base-x": "^3.0.2" } }, ""],
+
     "wif/bs58check/@noble/hashes": ["@noble/hashes@1.7.2", "", {}, "sha512-biZ0NUSxyjLLqo6KxEJ1b+C2NAx0wtDoFvCaXHGgUkeHzf3Xc1xKumFKREuT7f7DARNZ/slvYUwFG6B0f2b6hQ=="],
 
     "wrap-ansi-cjs/ansi-styles/color-convert": ["color-convert@2.0.1", "", { "dependencies": { "color-name": "~1.1.4" } }, ""],
@@ -4290,6 +4517,14 @@
 
     "config-file-ts/glob/minimatch/brace-expansion": ["brace-expansion@2.0.1", "", { "dependencies": { "balanced-match": "^1.0.0" } }, ""],
 
+    "frontend/@solana/wallet-adapter-react-ui/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "frontend/@solana/wallet-adapter-react-ui/@solana/wallet-adapter-base-ui/@solana/wallet-adapter-react": ["@solana/wallet-adapter-react@0.15.37", "", { "dependencies": { "@solana-mobile/wallet-adapter-mobile": "^2.1.5", "@solana/wallet-adapter-base": "^0.9.25", "@solana/wallet-standard-wallet-adapter-react": "^1.1.4" }, "peerDependencies": { "@solana/web3.js": "^1.98.0", "react": "*" } }, "sha512-lWlvA4I5aAJgcd7gyq+xlz4KIjxnMWept1DabKumQmBARaUiROnN8Ib/qp0MlrSov+zsHCSHSJzSzUtgNjvyXA=="],
+
+    "frontend/@solana/wallet-adapter-react/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
+
+    "hub/@solana/web3.js/bs58/base-x": ["base-x@3.0.11", "", { "dependencies": { "safe-buffer": "^5.0.1" } }, ""],
+
     "metro-config/cosmiconfig/import-fresh/resolve-from": ["resolve-from@3.0.0", "", {}, "sha512-GnlH6vxLymXJNMBo7XP1fJIzBFbdYt49CuTwmB/6N53t+kMPRMFKz783LlQ4tv28XoQfMWinAJX6WCGf2IlaIw=="],
 
     "metro-config/cosmiconfig/js-yaml/argparse": ["argparse@1.0.10", "", { "dependencies": { "sprintf-js": "~1.0.2" } }, "sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg=="],
@@ -4305,6 +4540,8 @@
     "qrcode/yargs/find-up/locate-path": ["locate-path@5.0.0", "", { "dependencies": { "p-locate": "^4.1.0" } }, "sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g=="],
 
     "snakecase-keys/snake-case/dot-case/no-case": ["no-case@3.0.4", "", { "dependencies": { "lower-case": "^2.0.2", "tslib": "^2.0.3" } }, ""],
+
+    "validator/@solana/web3.js/bs58/base-x": ["base-x@3.0.11", "", { "dependencies": { "safe-buffer": "^5.0.1" } }, ""],
 
     "wrap-ansi-cjs/ansi-styles/color-convert/color-name": ["color-name@1.1.4", "", {}, ""],
 
@@ -4335,6 +4572,8 @@
     "@turbo/workspaces/ora/log-symbols/chalk/supports-color": ["supports-color@5.5.0", "", { "dependencies": { "has-flag": "^3.0.0" } }, ""],
 
     "cliui/wrap-ansi/ansi-styles/color-convert/color-name": ["color-name@1.1.4", "", {}, ""],
+
+    "frontend/@solana/wallet-adapter-react-ui/@solana/wallet-adapter-base-ui/@solana/wallet-adapter-react/@solana/wallet-adapter-base": ["@solana/wallet-adapter-base@0.9.25", "", { "dependencies": { "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/features": "^1.1.0", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@solana/web3.js": "^1.98.0" } }, "sha512-QZRjxhFK4e296ufUg4ntOPh3GmVANTwC/M9HmwEqMSoowq3cRXSZ53R6d6YJAPldCa7smC8cKG8OzkbLHBKG9w=="],
 
     "metro-config/cosmiconfig/js-yaml/argparse/sprintf-js": ["sprintf-js@1.0.3", "", {}, "sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g=="],
 
@@ -4367,6 +4606,8 @@
     "@turbo/workspaces/ora/chalk/ansi-styles/color-convert/color-name": ["color-name@1.1.4", "", {}, ""],
 
     "@turbo/workspaces/ora/log-symbols/chalk/supports-color/has-flag": ["has-flag@3.0.0", "", {}, ""],
+
+    "frontend/@solana/wallet-adapter-react-ui/@solana/wallet-adapter-base-ui/@solana/wallet-adapter-react/@solana/wallet-adapter-base/eventemitter3": ["eventemitter3@5.0.1", "", {}, ""],
 
     "qrcode/yargs/find-up/locate-path/p-locate/p-limit": ["p-limit@2.3.0", "", { "dependencies": { "p-try": "^2.0.0" } }, "sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w=="],
 
