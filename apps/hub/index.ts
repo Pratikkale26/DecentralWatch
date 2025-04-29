@@ -62,7 +62,7 @@ Bun.serve({
     },
 });
 
-async function signupHandler(ws: ServerWebSocket<unknown>, { ip, publicKey, signedMessage, callbackId }: SignupIncomingMessage) {
+async function signupHandler(ws: ServerWebSocket<unknown>, { ip, publicKey, signedMessage, callbackId, location }: SignupIncomingMessage) {
     const validatorDb = await prismaClient.validator.findFirst({
         where: {
             publicKey,
@@ -87,12 +87,11 @@ async function signupHandler(ws: ServerWebSocket<unknown>, { ip, publicKey, sign
         return;
     }
     
-    //TODO: Given the ip, return the location
     const validator = await prismaClient.validator.create({
         data: {
             ip,
             publicKey,
-            location: 'unknown',
+            location: location,
         },
     });
 

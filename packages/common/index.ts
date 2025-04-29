@@ -1,6 +1,7 @@
 export interface SignupIncomingMessage {
     ip: string;
     publicKey: string;
+    location: string;
     signedMessage: string;
     callbackId: string;
 }

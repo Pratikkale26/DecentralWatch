@@ -10,6 +10,26 @@ const CALLBACKS: {[callbackId: string]: (data: SignupOutgoingMessage) => void} =
 
 let validatorId: string | null = null;
 
+const getIPAndLocation = async () => {
+    try {
+      const res = await fetch('https://ipapi.co/json/');
+      const data = await res.json();
+  
+      const locationStr = `${data.city}, ${data.region}, ${data.country_name}`;
+      return {
+        ip: data.ip,
+        location: locationStr,
+      };
+    } catch (err) {
+      console.error('Failed to fetch IP and location:', err);
+      return {
+        ip: '0.0.0.0',
+        location: 'Unknown',
+      };
+    }
+  };
+   
+
 export async function startValidator() {
     const keypair = await loadWallet();
     if (!keypair) {
@@ -29,6 +49,7 @@ export async function startValidator() {
     }
 
     ws.onopen = async () => {
+        const { ip, location } = await getIPAndLocation();
         const callbackId = randomUUID();
         CALLBACKS[callbackId] = (data: SignupOutgoingMessage) => {
             validatorId = data.validatorId;
@@ -39,7 +60,8 @@ export async function startValidator() {
             type: 'signup',
             data: {
                 callbackId,
-                ip: '127.0.0.1',
+                ip: ip as string,
+                location: location,
                 publicKey: keypair.publicKey,
                 signedMessage,
             },
