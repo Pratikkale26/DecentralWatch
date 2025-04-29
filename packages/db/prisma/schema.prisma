@@ -52,12 +52,13 @@ enum WebsiteStatus {
 }
 
 model Payout {
-  id           Int              @id @default(autoincrement())
-  validatorId  String
-  validator    Validator        @relation(fields: [validatorId], references: [id])
-  amount       Int
-  signature    String
-  status       TransactionStatus
+  id              Int              @id @default(autoincrement())
+  validatorId     String
+  validator       Validator        @relation(fields: [validatorId], references: [id])
+  amount          Int
+  signature       String
+  status          TransactionStatus
+  failure_reason  String?
 }
 
 enum TransactionStatus {

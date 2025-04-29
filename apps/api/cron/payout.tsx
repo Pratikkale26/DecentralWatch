@@ -40,22 +40,41 @@ const payoutValidators = async () => {
     console.log(`🔄 Found ${validators.length} validators with pending payouts.`);
 
     for (const validator of validators) {
-      const { publicKey, pendingPayouts } = validator;
+      const { id, publicKey, pendingPayouts } = validator;
 
       try {
         console.log(`💸 Sending ${pendingPayouts / LAMPORTS_PER_SOL} SOL to ${publicKey}...`);
 
         const signature = await sendSol(publicKey, pendingPayouts);
 
-        // Update DB after successful transaction
-        await prismaClient.validator.update({
+        // Update validator and create payout record
+        await prismaClient.$transaction([
+        prismaClient.validator.update({
           where: { publicKey },
           data: { pendingPayouts: 0 },
-        });
+        }),
+        prismaClient.payout.create({
+          data: {
+            validatorId: id,
+            amount: pendingPayouts,
+            signature,
+            status: "Success",
+          },
+        }),
+      ]);
 
         console.log(`✅ Paid ${pendingPayouts / LAMPORTS_PER_SOL} SOL to ${publicKey} — Tx: ${signature}`);
-      } catch (err) {
+      } catch (err: any) {
         console.error(`❌ Failed to pay ${publicKey}:`, err);
+        await prismaClient.payout.create({
+          data: {
+            validatorId: id,
+            amount: pendingPayouts,
+            signature: "",
+            status: "Failure",
+            failure_reason: err.message,
+          },
+        });
       }
     }
 
