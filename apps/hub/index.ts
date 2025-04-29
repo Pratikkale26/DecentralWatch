@@ -177,6 +177,67 @@ setInterval(async () => {
                         return;
                     }
 
+                    if (status === "DOWN") {
+                        const alreadyDown = website.isDown;
+                      
+                        if (!alreadyDown) {
+                          log("Website is down (new incident)", {
+                            validatorId, websiteUrl: website.url, websiteId: website.id
+                          });
+                      
+                          await prismaClient.notification.create({
+                            data: {
+                              userId: website.userId,
+                              message: `Hey, your website ${website.url} is down).`
+                            },
+                          });
+                      
+                          // Mark as down
+                          await prismaClient.website.update({
+                            where: { id: website.id },
+                            data: { isDown: true },
+                          });
+
+                          //get owner of the website
+                          const user =await prismaClient.user.findFirst({
+                            where: {
+                              id: website.userId
+                            }
+                          })
+                          // TODO: send alert
+                          
+                        }
+                      } else {
+                        // Website recovered: mark it up again
+                        if (website.isDown) {
+                          log("Website recovered", {
+                            validatorId, websiteUrl: website.url, websiteId: website.id
+                          });
+                      
+                          await prismaClient.website.update({
+                            where: { id: website.id },
+                            data: { isDown: false },
+                          });
+                      
+                          await prismaClient.notification.create({
+                            data: {
+                              userId: website.userId,
+                              message: `🎉 Your website ${website.url} is back online!`,
+                            },
+                          });
+                      
+                          //get owner of the website
+                          const user =await prismaClient.user.findFirst({
+                            where: {
+                              id: website.userId
+                            }
+                          })
+                          // TODO: send alert
+                          
+                        }
+                      }
+                      
+
                     await prismaClient.$transaction(async (tx) => {
                         await tx.websiteTick.create({
                             data: {

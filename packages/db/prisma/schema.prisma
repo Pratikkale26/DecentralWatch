@@ -22,6 +22,7 @@ model Website {
   disabled     Boolean       @default(false)
   expiry       DateTime?
   signature    String
+  isDown       Boolean       @default(false)
 }
 
 model Validator {
