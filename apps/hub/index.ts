@@ -197,15 +197,6 @@ setInterval(async () => {
                             where: { id: website.id },
                             data: { isDown: true },
                           });
-
-                          //get owner of the website
-                          const user =await prismaClient.user.findFirst({
-                            where: {
-                              id: website.userId
-                            }
-                          })
-                          // TODO: send alert
-                          
                         }
                       } else {
                         // Website recovered: mark it up again
@@ -224,16 +215,7 @@ setInterval(async () => {
                               userId: website.userId,
                               message: `🎉 Your website ${website.url} is back online!`,
                             },
-                          });
-                      
-                          //get owner of the website
-                          const user =await prismaClient.user.findFirst({
-                            where: {
-                              id: website.userId
-                            }
-                          })
-                          // TODO: send alert
-                          
+                          });    
                         }
                       }
                       

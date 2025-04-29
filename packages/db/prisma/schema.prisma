@@ -69,9 +69,10 @@ enum TransactionStatus {
 }
 
 model notification {
-  id        String @id @default(uuid())
+  id        String      @id @default(uuid())
   userId    String
   message   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  sent      Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
 }
