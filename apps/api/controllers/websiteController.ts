@@ -98,15 +98,27 @@ export const disableWebsite = async (req: Request, res: Response) => {
   const userId = req.userId;
   const websiteId = req.params.websiteId;
 
-  await prismaClient.website.update({
-    where: {
-        userId,
-        id: websiteId
-    },
-    data: { disabled: true }
-  });
+  if (!websiteId) {
+    res.status(400).json({ error: "Missing websiteId in URL" });
+    return;
+  }
 
-  res.json({ message: "Website disabled successfully" });
+  try {
+    await prismaClient.website.update({
+      where: {
+        id: websiteId,
+        userId,
+      },
+      data: {
+        disabled: true,
+      },
+    });
+
+    res.json({ message: "Website disabled successfully" });
+  } catch (error) {
+    console.error("Failed to disable website:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 // auto disable website after 30 days

@@ -14,8 +14,8 @@ app.use(cors());
 // Auto-disable expired websites
 console.log("starting cron job")
 scheduleWebsiteAutoDisable();
-payoutValidators();
-scheduleWebsiteAlert();
+// payoutValidators();
+// scheduleWebsiteAlert();
 console.log("started cron job")
 
 // Routes

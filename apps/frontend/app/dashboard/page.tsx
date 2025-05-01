@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useMemo } from 'react';
-import { ChevronDown, ChevronUp, Globe, Plus, X } from 'lucide-react';
+import { ChevronDown, ChevronUp, Globe, Plus, StopCircle, X } from 'lucide-react';
 import { useWebsites } from '@/hooks/useWebsites';
 import axios from 'axios';
 import { API_BACKEND_URL } from '@/config';
@@ -139,6 +139,8 @@ interface Website {
 
 function WebsiteCard({ website }: { website: Website }) {
   const [isOpen, setIsOpen] = useState(false);
+  const {getToken} = useAuth();
+  const { refreshWebsites} = useWebsites();
   
   const aggregatedUptime = useMemo(() => 
     website.websiteTicks ? aggregateTicksToWindows(website.websiteTicks.map(tick => ({ createdAt: tick.createdAt, status: tick.status }))) : [],
@@ -174,6 +176,29 @@ function WebsiteCard({ website }: { website: Website }) {
     ? new Date(website.websiteTicks[0].createdAt).toLocaleTimeString() 
     : 'Never';
 
+    async function handleDeleteWebsite(websiteId: string) {
+      const confirmed = window.confirm("Are you sure you want to delete this website?");
+      if (!confirmed) return;
+      
+      try {
+        const token = await getToken();
+    
+        await axios.delete(`${API_BACKEND_URL}/api/v1/website/${websiteId}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(() => {
+          console.log('Website deleted:', websiteId);
+          refreshWebsites();
+        })
+        
+      } catch (error) {
+        console.error('Error disabling website:', error);
+      }
+    }    
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div
@@ -194,6 +219,9 @@ function WebsiteCard({ website }: { website: Website }) {
           }`}>
             {uptimePercentage}% Uptime
           </span>
+            <button onClick={() => handleDeleteWebsite(website.id)} className='text-red-500 hover:text-red-600 cursor-pointer'>
+              <StopCircle size={30}/>
+            </button>
           {isOpen ? (
             <ChevronUp className="w-5 h-5 text-gray-400" />
           ) : (
