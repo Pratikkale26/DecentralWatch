@@ -139,7 +139,7 @@ export const autoDisableWebsite = async (req: Request, res: Response) => {
     const users = await prismaClient.user.findMany({
       where: {
         id: {
-          in: websites.map((w) => w.userId)
+          in: websites.map((w: { userId: string; }) => w.userId)
         }
       }
     });
