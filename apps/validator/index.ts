@@ -44,26 +44,30 @@ async function main() {
 
         ws.onopen = async () => {
             log("Connection established with hub", { hubUrl });
+        
             const callbackId = randomUUIDv7();
-            
+        
             CALLBACKS[callbackId] = (data: SignupOutgoingMessage) => {
                 validatorId = data.validatorId;
                 log("Validator registered with hub", { validatorId: data.validatorId });
             };
-            
+        
+            const { ip, location } = await getIPAndLocation();
             const signedMessage = await signMessage(`Signed message for ${callbackId}, ${keypair.publicKey}`, keypair);
-            log("Sending signup request", { callbackId, publicKey: keypair.publicKey.toString() });
-
+            log("Sending signup request", { callbackId, publicKey: keypair.publicKey.toString(), ip, location });
+        
             ws.send(JSON.stringify({
                 type: 'signup',
                 data: {
                     callbackId,
-                    ip: '127.0.0.1',
+                    ip,
+                    location,
                     publicKey: keypair.publicKey,
                     signedMessage,
                 },
             }));
         };
+        
 
         ws.onerror = (error) => {
             log("WebSocket error", { error: String(error) });
@@ -147,6 +151,25 @@ async function signMessage(message: string, keypair: Keypair) {
     
     return JSON.stringify(Array.from(signature));
 }
+
+async function getIPAndLocation() {
+    try {
+        const res = await fetch('https://ipapi.co/json/');
+        const data = await res.json();
+        const locationStr = `${data.city}, ${data.region}, ${data.country_name}`;
+        return {
+            ip: data.ip || '0.0.0.0',
+            location: locationStr || 'Unknown',
+        };
+    } catch (err) {
+        log("Failed to fetch IP and location", { error: err instanceof Error ? err.message : String(err) });
+        return {
+            ip: '0.0.0.0',
+            location: 'Unknown',
+        };
+    }
+}
+
 
 // Start the validator
 log("Starting validator process");
