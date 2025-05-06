@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import * as React from "react"
 
 interface RewardCardProps {
   title: string

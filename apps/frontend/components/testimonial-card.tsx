@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import * as React from "react"
 
 interface TestimonialCardProps {
   quote: string

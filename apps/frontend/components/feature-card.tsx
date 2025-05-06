@@ -1,5 +1,6 @@
 import { Activity, BarChart, Bell, Code, Network, Users } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import * as React from "react"
 
 interface FeatureCardProps {
   title: string
