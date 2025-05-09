@@ -7,6 +7,7 @@ import { API_BACKEND_URL } from '@/config';
 import { useAuth } from '@clerk/nextjs';
 import { WebsiteCard } from './components/WebsiteCard';
 import { AddWebsiteModal } from './components/AddWebsiteModal';
+import { SolanaStatus } from './components/SolanaStatus';
 
 export default function DashboardPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,6 +50,8 @@ export default function DashboardPage() {
             Add Website
           </button>
         </div>
+
+        <SolanaStatus className="mb-6" />
         
         <div className="space-y-4">
           {websites.map((website) => (

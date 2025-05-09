@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ChevronDown, ChevronUp, StopCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, Power } from 'lucide-react';
 import { useAuth } from '@clerk/nextjs';
 import axios from 'axios';
 import { API_BACKEND_URL } from '@/config';
@@ -83,8 +83,9 @@ export function WebsiteCard({ website, onDelete }: WebsiteCardProps) {
               handleDeleteWebsite(website.id);
             }} 
             className='text-red-500 hover:text-red-600 cursor-pointer'
+            title='Disable website'
           >
-            <StopCircle size={30}/>
+            <Power size={30}/>
           </button>
           {isOpen ? (
             <ChevronUp className="w-5 h-5 text-gray-400" />
