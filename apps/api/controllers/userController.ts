@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import nacl from "tweetnacl";
 import { PublicKey } from "@solana/web3.js";
-import { prismaClient } from "../../../packages/db/src/index";
+import { prismaClient } from "db/client";
 
 export const linkWallet = async (req: Request, res: Response) => {
   try {

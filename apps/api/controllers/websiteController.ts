@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { prismaClient } from "../../../packages/db/src/index";
+import { prismaClient } from "db/client";
 import { connection, PARENT_WALLET_ADDRESS } from "../utils/solana";
 
 // create website
