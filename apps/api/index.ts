@@ -9,7 +9,9 @@ import { scheduleWebsiteAlert } from "./cron/websiteAlert";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 
 // Auto-disable expired websites
 console.log("starting cron job")
