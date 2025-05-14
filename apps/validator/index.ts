@@ -22,7 +22,10 @@ async function main() {
         );
         log("Using public key", { publicKey: keypair.publicKey.toString() });
         
-        const hubUrl = "ws://localhost:8081";
+        const hubUrl = process.env.HUB_URL;
+        if (!hubUrl) {
+            throw new Error("HUB_URL is not set");
+        }
         const ws = new WebSocket(hubUrl);
 
         ws.onmessage = async (event) => {

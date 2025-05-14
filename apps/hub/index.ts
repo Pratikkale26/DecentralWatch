@@ -220,7 +220,7 @@ setInterval(async () => {
                       }
                       
 
-                    await prismaClient.$transaction(async (tx) => {
+                    await prismaClient.$transaction(async (tx: { websiteTick: { create: (arg0: { data: { websiteId: any; validatorId: string; status: "UP" | "DOWN"; latency: number; createdAt: Date; }; }) => any; }; validator: { update: (arg0: { where: { id: string; }; data: { pendingPayouts: { increment: number; }; }; }) => any; }; }) => {
                         await tx.websiteTick.create({
                             data: {
                                 websiteId: website.id,
