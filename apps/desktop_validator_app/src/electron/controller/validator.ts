@@ -12,23 +12,24 @@ let validatorId: string | null = null;
 
 const getIPAndLocation = async () => {
     try {
-      const res = await fetch('https://ipapi.co/json/');
-      const data = await res.json();
-  
-      const locationStr = `${data.city}, ${data.region}, ${data.country_name}`;
-      return {
-        ip: data.ip,
-        location: locationStr,
-      };
+        const res = await fetch('https://ipapi.co/json/');
+        const data = await res.json();
+        
+        // Debugging log to check the fetched data structure
+        console.log('IP and Location Data:', data);
+
+        // Ensure that the fields exist and are not undefined
+        const ip = data.ip || '0.0.0.0';
+        const location = data.city && data.region && data.country_name
+            ? `${data.city}, ${data.region}, ${data.country_name}`
+            : 'Unknown Location';
+        
+        return { ip, location };
     } catch (err) {
-      console.error('Failed to fetch IP and location:', err);
-      return {
-        ip: '0.0.0.0',
-        location: 'Unknown',
-      };
+        console.error('Failed to fetch IP and location:', err);
+        return { ip: '0.0.0.0', location: 'Unknown' };
     }
-  };
-   
+}
 
 export async function startValidator() {
     const keypair = await loadWallet();
@@ -36,12 +37,12 @@ export async function startValidator() {
         throw new Error('Failed to load wallet');
     }
 
-    const ws = new WebSocket("ws://localhost:8081");
+    const ws = new WebSocket("wss://decentralwatch-hub.onrender.com");
 
     ws.onmessage = async (event) => {
         const data: OutgoingMessage = JSON.parse(event.data);
         if (data.type === 'signup') {
-            CALLBACKS[data.data.callbackId]?.(data.data)
+            CALLBACKS[data.data.callbackId]?.(data.data);
             delete CALLBACKS[data.data.callbackId];
         } else if (data.type === 'validate') {
             await validateHandler(ws, data.data, keypair);
@@ -55,6 +56,9 @@ export async function startValidator() {
             validatorId = data.validatorId;
         }
         const signedMessage = await signMessage(`Signed message for ${callbackId}, ${keypair.publicKey}`, keypair);
+
+        // Log to ensure data is correctly formatted
+        console.log('Sending signup data:', { callbackId, ip, location, publicKey: keypair.publicKey });
 
         ws.send(JSON.stringify({
             type: 'signup',
