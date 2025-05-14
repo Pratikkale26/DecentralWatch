@@ -22,7 +22,6 @@
     "db": "*",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "jwt": "^0.2.0",
     "node-cron": "^3.0.3",
     "resend": "^4.4.0"
   }
