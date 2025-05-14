@@ -9,9 +9,18 @@ import { scheduleWebsiteAlert } from "./cron/websiteAlert";
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin: "*"
-}));
+
+const allowedOrigins = [
+  "https://watch.kalehub.com", 
+  "http://localhost:3000",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
 
 // Auto-disable expired websites
 console.log("starting cron job")
