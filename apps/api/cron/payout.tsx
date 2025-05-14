@@ -1,6 +1,6 @@
 import { Connection, Keypair, PublicKey, SystemProgram, Transaction, sendAndConfirmTransaction, LAMPORTS_PER_SOL } from "@solana/web3.js";
 import bs58 from "bs58";
-import { prismaClient } from "db/client";
+import { prismaClient } from "../../../packages/db/src/index";
 
 const connection = new Connection("https://api.devnet.solana.com");
 const secretKey = bs58.decode(process.env.PARENT_PRIVATE_KEY!);

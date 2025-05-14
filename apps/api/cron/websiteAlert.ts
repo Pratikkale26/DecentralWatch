@@ -1,5 +1,5 @@
 import cron from 'node-cron';
-import { prismaClient } from 'db/client';
+import { prismaClient } from "../../../packages/db/src/index";
 import { sendEmail } from "../lib/email"; // email helper
 
 export const scheduleWebsiteAlert = () => {
