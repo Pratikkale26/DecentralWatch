@@ -8,6 +8,11 @@
     "jsx": "react-jsx",
     "allowJs": true,
 
+    "baseUrl": ".", // tells TS where to start resolving from
+    "paths": {
+      "db/*": ["../../packages/db/src/*"] // adjust path based on file depth
+    },
+
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
