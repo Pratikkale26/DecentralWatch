@@ -14,6 +14,27 @@ import axios from "axios"
 import { useAuth } from "@clerk/nextjs";
 import { useUser } from '@clerk/nextjs';
 
+// Add download URLs for different platforms
+const DOWNLOAD_URLS = {
+  windows: "https://github.com/Pratikkale26/DecentralWatch/releases/tag/v1.0.0",
+  mac: "https://github.com/Pratikkale26/DecentralWatch/releases/tag/v1.0.0",
+  linux: "https://github.com/Pratikkale26/DecentralWatch/releases/tag/v1.0.0"
+};
+
+const getDownloadUrl = () => {
+  if (typeof window === 'undefined') return DOWNLOAD_URLS.windows;
+  
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  if (userAgent.includes('win')) return DOWNLOAD_URLS.windows;
+  if (userAgent.includes('mac')) return DOWNLOAD_URLS.mac;
+  if (userAgent.includes('linux')) return DOWNLOAD_URLS.linux;
+  return DOWNLOAD_URLS.windows; // Default to Windows
+};
+
+const handleDownload = () => {
+  const downloadUrl = getDownloadUrl();
+  window.open(downloadUrl, '_blank');
+};
 
 const NavLinks = ({ onClick }: { onClick?: () => void }) => (
   <>
@@ -87,9 +108,9 @@ export function Header() {
       <div className="mx-10 flex h-16 items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-6 md:gap-10">
-          <Link href="/" className="flex items-center space-x-2">
-            <Shield className="h-6 w-6 text-primary" />
-            <span className="inline-block font-bold">DecentralWatch</span>
+          <Link href="/" className="flex items-center space-x-2 group">
+            <Shield className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
+            <span className="inline-block font-bold bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">DecentralWatch</span>
           </Link>
           {/* Hide navigation links on pages other than "/" */}
           {pathname === "/" && (
@@ -103,21 +124,49 @@ export function Header() {
         <div className="flex items-center space-x-4">
           <ThemeToggle />
           {pathname === "/" && (
-            <Button asChild size="sm" className="hidden sm:inline-flex">
-              <Link href="#join">Join as Validator</Link> 
+            <Button 
+              asChild 
+              size="sm" 
+              className="hidden sm:inline-flex bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 text-white shadow-sm hover:shadow-md transition-all duration-300 hover:cursor-pointer hover:scale-105"
+              onClick={handleDownload}
+            >
+              <Link href="#" onClick={(e) => { e.preventDefault(); handleDownload(); }}>
+                Join as Validator
+              </Link> 
             </Button>
           )}
-          <SignedOut>
-            <SignInButton />
-            <SignUpButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          <div className='flex'>
-            {publicKey ? <WalletDisconnectButton /> : <WalletMultiButton /> }
+          <div className="flex items-center gap-4">
+            <SignedOut>
+              <SignInButton>
+                <button className="px-4 py-2 text-sm font-medium bg-secondary text-secondary-foreground rounded-xl shadow-sm hover:bg-secondary/80 transition-colors hover:cursor-pointer hover:scale-105">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton>
+                <button className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl shadow-sm hover:from-primary/90 hover:to-purple-500/90 hover:cursor-pointer hover:scale-105 transition-all duration-300">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+
+          <div className='flex'>
+            {publicKey ? (
+              <WalletDisconnectButton className="!bg-destructive hover:!bg-destructive/90" />
+            ) : (
+              <WalletMultiButton className="!bg-primary hover:!bg-primary/90" />
+            )}
+          </div>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="md:hidden hover:bg-secondary/50" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
@@ -125,12 +174,17 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && pathname === "/" && (
-        <div className="md:hidden">
+        <div className="md:hidden border-t">
           <div className="container py-4 space-y-4">
             <nav className="flex flex-col space-y-4">
               <NavLinks onClick={() => setIsMobileMenuOpen(false)} />
-              <Button asChild size="sm" className="w-full">
-                <Link href="#join" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button 
+                asChild 
+                size="sm" 
+                className="w-full bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 text-white shadow-sm hover:shadow-md transition-all duration-300"
+                onClick={handleDownload}
+              >
+                <Link href="#" onClick={(e) => { e.preventDefault(); handleDownload(); }}>
                   Join as Validator
                 </Link>
               </Button>

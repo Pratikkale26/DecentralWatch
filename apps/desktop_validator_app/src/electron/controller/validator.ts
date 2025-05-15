@@ -120,8 +120,6 @@ async function signMessage(message: string, keypair: Keypair) {
     return JSON.stringify(Array.from(signature));
 }
 
-startValidator();
-
 setInterval(async () => {
 
 }, 10000);

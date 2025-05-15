@@ -13,6 +13,7 @@ app.use(express.json());
 const allowedOrigins = [
   "https://watch.kalehub.com", 
   "http://localhost:3000",
+  "https://uptora.xyz",
 ];
 
 app.use(
@@ -25,8 +26,8 @@ app.use(
 // Auto-disable expired websites
 console.log("starting cron job")
 scheduleWebsiteAutoDisable();
-// payoutValidators();
-// scheduleWebsiteAlert();
+payoutValidators();
+scheduleWebsiteAlert();
 console.log("started cron job")
 
 // Routes

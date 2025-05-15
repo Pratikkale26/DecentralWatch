@@ -40,9 +40,9 @@ export function SolanaStatus({ className = '' }: SolanaStatusProps) {
       clearInterval(interval);
     };
   }, []);
-
+  
   return (
-    <div className={`bg-white rounded-lg shadow-md p-4 ${className}`}>
+    <div className={`bg-white dark:bg-gray-900 rounded-lg shadow-md p-4 ${className}`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Activity
@@ -51,12 +51,12 @@ export function SolanaStatus({ className = '' }: SolanaStatusProps) {
                 ? 'text-green-500'
                 : status === 'down'
                 ? 'text-red-500'
-                : 'text-gray-400'
+                : 'text-gray-400 dark:text-gray-500'
             }`}
           />
           <div>
-            <h3 className="font-semibold text-gray-900">Solana Mainnet Status</h3>
-            <p className="text-sm text-gray-500">
+            <h3 className="font-semibold text-gray-900 dark:text-white">Solana Mainnet Status</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               {status === 'loading'
                 ? 'Checking status...'
                 : status === 'up'
@@ -67,12 +67,14 @@ export function SolanaStatus({ className = '' }: SolanaStatusProps) {
         </div>
         {blockHeight !== null && (
           <div className="text-right">
-            <p className="text-sm text-gray-500">Latest Block Height</p>
-            <p className="font-mono text-sm">{blockHeight.toLocaleString()}</p>
+            <p className="text-sm text-gray-900 dark:text-white">Latest Block Height</p>
+            <p className="font-mono text-sm text-gray-700 dark:text-gray-300">
+              {blockHeight.toLocaleString()}
+            </p>
           </div>
         )}
       </div>
       {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
     </div>
-  );
+  );  
 }
