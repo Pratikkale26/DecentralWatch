@@ -58,22 +58,22 @@ export function WebsiteCard({ website, onDelete }: WebsiteCardProps) {
   }    
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-md overflow-hidden">
       <div
-        className="p-4 flex items-center justify-between cursor-pointer hover:bg-gray-50"
+        className="p-4 flex items-center justify-between cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex items-center gap-4">
           <StatusCircle status={currentStatus} />
           <div>
-            <h3 className="font-semibold text-gray-900">{websiteName}</h3>
-            <p className="text-sm text-gray-500">{website.url}</p>
+            <h3 className="font-semibold text-gray-900 dark:text-white">{websiteName}</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{website.url}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <span className={`text-sm font-medium ${
-            currentStatus === 'up' ? 'text-green-600' : 
-            currentStatus === 'down' ? 'text-red-600' : 'text-gray-500'
+            currentStatus === 'up' ? 'text-green-600' :
+            currentStatus === 'down' ? 'text-red-600' : 'text-gray-500 dark:text-gray-400'
           }`}>
             {uptimePercentage}% Uptime
           </span>
@@ -82,43 +82,46 @@ export function WebsiteCard({ website, onDelete }: WebsiteCardProps) {
               e.stopPropagation();
               handleDeleteWebsite(website.id);
             }} 
-            className='text-red-500 hover:text-red-600 cursor-pointer'
-            title='Disable website'
+            className="text-red-500 hover:text-red-600 cursor-pointer"
+            title="Disable website"
           >
-            <Power size={30}/>
+            <Power size={30} />
           </button>
           {isOpen ? (
-            <ChevronUp className="w-5 h-5 text-gray-400" />
+            <ChevronUp className="w-5 h-5 text-gray-400 dark:text-gray-300" />
           ) : (
-            <ChevronDown className="w-5 h-5 text-gray-400" />
+            <ChevronDown className="w-5 h-5 text-gray-400 dark:text-gray-300" />
           )}
         </div>
       </div>
+
       {isOpen && (
-        <div className="px-4 pb-4 border-t border-gray-100">
+        <div className="px-4 pb-4 border-t border-gray-100 dark:border-zinc-700">
           <div className="mt-3">
             <div className="flex justify-between items-center mb-2">
-              <p className="text-sm font-medium text-gray-500">Website Status</p>
-              <p className="text-xs text-gray-400">Last check: {lastCheckTime}</p>
+              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Website Status</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500">Last check: {lastCheckTime}</p>
             </div>
             <div className="grid grid-cols-3 gap-2">
-              <div className="bg-gray-50 p-2 rounded">
-                <p className="text-xs text-gray-500">Status</p>
+              <div className="bg-gray-50 dark:bg-zinc-800 p-2 rounded">
+                <p className="text-xs text-gray-500 dark:text-gray-400">Status</p>
                 <p className={`text-sm font-medium ${
-                  currentStatus === 'up' ? 'text-green-600' : 
-                  currentStatus === 'down' ? 'text-red-600' : 'text-gray-500'
+                  currentStatus === 'up' ? 'text-green-600' :
+                  currentStatus === 'down' ? 'text-red-600' : 'text-gray-500 dark:text-gray-400'
                 }`}>
                   {currentStatus === 'up' ? 'Online' : 
-                   currentStatus === 'down' ? 'Offline' : 'Unknown'}
+                  currentStatus === 'down' ? 'Offline' : 'Unknown'}
                 </p>
               </div>
-              <div className="bg-gray-50 p-2 rounded">
-                <p className="text-xs text-gray-500">Uptime</p>
-                <p className="text-sm font-medium text-blue-600">{uptimePercentage}%</p>
+              <div className="bg-gray-50 dark:bg-zinc-800 p-2 rounded">
+                <p className="text-xs text-gray-500 dark:text-gray-400">Uptime</p>
+                <p className="text-sm font-medium text-blue-600 dark:text-blue-400">{uptimePercentage}%</p>
               </div>
-              <div className="bg-gray-50 p-2 rounded">
-                <p className="text-xs text-gray-500">Checks</p>
-                <p className="text-sm font-medium text-blue-600">{website.websiteTicks?.length || 0}</p>
+              <div className="bg-gray-50 dark:bg-zinc-800 p-2 rounded">
+                <p className="text-xs text-gray-500 dark:text-gray-400">Checks</p>
+                <p className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                  {website.websiteTicks?.length || 0}
+                </p>
               </div>
             </div>
             <UptimeGraph uptime={aggregatedUptime} />
