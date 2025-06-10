@@ -14,7 +14,6 @@ import axios from "axios"
 import { useAuth } from "@clerk/nextjs";
 import { useUser } from '@clerk/nextjs';
 
-// Add download URLs for different platforms
 const DOWNLOAD_URLS = {
   windows: "https://github.com/Pratikkale26/DecentralWatch/releases/tag/v1.0.0",
   mac: "https://github.com/Pratikkale26/DecentralWatch/releases/tag/v1.0.0",
@@ -23,12 +22,11 @@ const DOWNLOAD_URLS = {
 
 const getDownloadUrl = () => {
   if (typeof window === 'undefined') return DOWNLOAD_URLS.windows;
-  
   const userAgent = window.navigator.userAgent.toLowerCase();
   if (userAgent.includes('win')) return DOWNLOAD_URLS.windows;
   if (userAgent.includes('mac')) return DOWNLOAD_URLS.mac;
   if (userAgent.includes('linux')) return DOWNLOAD_URLS.linux;
-  return DOWNLOAD_URLS.windows; // Default to Windows
+  return DOWNLOAD_URLS.windows;
 };
 
 const handleDownload = () => {
@@ -55,9 +53,9 @@ export function Header() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const {publicKey, signMessage} = useWallet()
-  const {getToken} = useAuth();
-  const { user, isLoaded} = useUser();
+  const { publicKey, signMessage } = useWallet()
+  const { getToken } = useAuth()
+  const { user, isLoaded } = useUser()
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
@@ -70,12 +68,8 @@ export function Header() {
       const message = new TextEncoder().encode("Sign in into DecentralWatch");
       const signature = await signMessage?.(message);
       const token = await getToken();
-      
-      if (!token || !signature || !publicKey) {
-        console.error("Missing token, signature, or publicKey.");
-        return;
-      }
-  
+      if (!token || !signature || !publicKey) return;
+
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BACKEND_URL}/api/v1/link-wallet`, {
         signature,
         publicKey: publicKey.toBase58(),
@@ -87,17 +81,16 @@ export function Header() {
           Authorization: `Bearer ${token}`,
         },
       });
-  
+
       if (res.status === 200) {
         console.log(res.data);
       }
     };
-  
+
     if (isLoaded && publicKey) {
       handleSignMessageAndSend();
     }
-  }, [isLoaded, publicKey]);
-  
+  }, [isLoaded, publicKey])
 
   return (
     <header
@@ -105,45 +98,51 @@ export function Header() {
         isScrolled ? "shadow-sm" : ""
       }`}
     >
-      <div className="mx-10 flex h-16 items-center justify-between">
+      <div className="px-4 sm:px-6 lg:px-10 flex h-16 items-center justify-between">
         {/* Left Section */}
-        <div className="flex items-center gap-6 md:gap-10">
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-10">
           <Link href="/" className="flex items-center space-x-2 group">
             <Shield className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
-            <span className="inline-block font-bold bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">DecentralWatch</span>
+            <span className="inline-block font-bold bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
+              DecentralWatch
+            </span>
           </Link>
-          {/* Hide navigation links on pages other than "/" */}
+
           {pathname === "/" && (
-            <nav className="hidden gap-6 md:flex">
+            <nav className="hidden md:flex gap-4 sm:gap-6">
               <NavLinks />
             </nav>
           )}
         </div>
 
         {/* Right Section */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3 sm:space-x-4">
           <ThemeToggle />
+
+          {/* Desktop Download CTA */}
           {pathname === "/" && (
             <Button 
               asChild 
-              size="sm" 
-              className="hidden sm:inline-flex bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 text-white shadow-sm hover:shadow-md transition-all duration-300 hover:cursor-pointer hover:scale-105"
+              size="sm"
+              className="hidden sm:inline-flex bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 text-white shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105"
               onClick={handleDownload}
             >
               <Link href="#" onClick={(e) => { e.preventDefault(); handleDownload(); }}>
                 Join as Validator
-              </Link> 
+              </Link>
             </Button>
           )}
-          <div className="flex items-center gap-4">
+
+          {/* Auth Buttons */}
+          <div className="hidden sm:flex items-center gap-2">
             <SignedOut>
               <SignInButton>
-                <button className="px-4 py-2 text-sm font-medium bg-secondary text-secondary-foreground rounded-xl shadow-sm hover:bg-secondary/80 transition-colors hover:cursor-pointer hover:scale-105">
+                <button className="px-3 py-2 text-sm font-medium bg-secondary text-secondary-foreground rounded-xl hover:bg-secondary/80 transition hover:scale-105">
                   Sign In
                 </button>
               </SignInButton>
               <SignUpButton>
-                <button className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl shadow-sm hover:from-primary/90 hover:to-purple-500/90 hover:cursor-pointer hover:scale-105 transition-all duration-300">
+                <button className="px-3 py-2 text-sm font-medium bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:from-primary/90 hover:to-purple-500/90 hover:scale-105 transition-all duration-300">
                   Sign Up
                 </button>
               </SignUpButton>
@@ -154,17 +153,20 @@ export function Header() {
             </SignedIn>
           </div>
 
-          <div className='flex'>
+          {/* Wallet Connect */}
+          <div className="hidden sm:flex">
             {publicKey ? (
               <WalletDisconnectButton className="!bg-destructive hover:!bg-destructive/90" />
             ) : (
               <WalletMultiButton className="!bg-primary hover:!bg-primary/90" />
             )}
           </div>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="md:hidden hover:bg-secondary/50" 
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="sm:hidden hover:bg-secondary/50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -172,24 +174,48 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown */}
       {isMobileMenuOpen && pathname === "/" && (
-        <div className="md:hidden border-t">
-          <div className="container py-4 space-y-4">
-            <nav className="flex flex-col space-y-4">
-              <NavLinks onClick={() => setIsMobileMenuOpen(false)} />
-              <Button 
-                asChild 
-                size="sm" 
-                className="w-full bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 text-white shadow-sm hover:shadow-md transition-all duration-300"
-                onClick={handleDownload}
-              >
-                <Link href="#" onClick={(e) => { e.preventDefault(); handleDownload(); }}>
-                  Join as Validator
-                </Link>
-              </Button>
-            </nav>
-          </div>
+        <div className="sm:hidden border-t px-4 py-4 space-y-4">
+          <nav className="flex flex-col gap-4">
+            <NavLinks onClick={() => setIsMobileMenuOpen(false)} />
+
+            <Button 
+              asChild 
+              size="sm" 
+              className="w-full bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 text-white"
+              onClick={handleDownload}
+            >
+              <Link href="#" onClick={(e) => { e.preventDefault(); handleDownload(); }}>
+                Join as Validator
+              </Link>
+            </Button>
+
+            <SignedOut>
+              <SignInButton>
+                <button className="w-full px-4 py-2 text-sm font-medium bg-secondary text-secondary-foreground rounded-xl hover:bg-secondary/80 transition">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton>
+                <button className="w-full px-4 py-2 text-sm font-medium bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:from-primary/90 hover:to-purple-500/90 transition">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+
+            <div className="pt-2">
+              {publicKey ? (
+                <WalletDisconnectButton className="!w-full !bg-destructive hover:!bg-destructive/90" />
+              ) : (
+                <WalletMultiButton className="!w-full !bg-primary hover:!bg-primary/90" />
+              )}
+            </div>
+          </nav>
         </div>
       )}
     </header>

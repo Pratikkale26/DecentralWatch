@@ -14,6 +14,7 @@ const allowedOrigins = [
   "https://watch.kalehub.com", 
   "http://localhost:3000",
   "https://uptora.xyz",
+  "https://www.decentralwatch.xyz/"
 ];
 
 app.use(
