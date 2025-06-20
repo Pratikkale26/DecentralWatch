@@ -13,8 +13,10 @@ app.use(express.json());
 const allowedOrigins = [
   "https://watch.kalehub.com", 
   "http://localhost:3000",
+  "http://localhost:5173",
   "https://uptora.xyz",
   "https://decentralwatch.xyz",
+  "https://validator.decentralwatch.xyz",
   "https://www.decentralwatch.xyz"
 ];
 
