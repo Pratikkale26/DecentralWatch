@@ -6,5 +6,4 @@ const router = Router();
 // Validator routes
 router.get("/validators", getAllValidators);
 router.get("/is-validator", isValidator);
-
 export default router;

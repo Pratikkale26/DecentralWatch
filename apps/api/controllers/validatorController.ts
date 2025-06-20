@@ -11,13 +11,17 @@ export const getAllValidators = async (req: Request, res: Response) => {
   }
 };
 
-// Check if a public key is a validator
+// Check if is a validator
 export const isValidator = async (req: Request, res: Response) => {
   const { publicKey } = req.query;
   if (!publicKey || typeof publicKey !== "string") {
     res.status(400).json({ error: "Missing or invalid publicKey" });
     return
   }
-  const validator = await prismaClient.validator.findFirst({ where: { publicKey } });
-  res.json({ isValidator: !!validator });
+  const validator = await prismaClient.validator.findUnique({
+    where: {
+        publicKey
+    }
+});
+  res.json({ isValidator: !!validator, pendingPayout: validator?.pendingPayouts });
 };

@@ -2,7 +2,7 @@
   "name": "db",
   "module": "index.ts",
   "type": "module",
-  "exports":{
+  "exports": {
     "./client": "./src/index.ts"
   },
   "scripts": {
@@ -10,7 +10,7 @@
     "db:migrate": "npx prisma migrate dev --skip-generate",
     "db:deploy": "npx prisma migrate deploy",
     "build": "tsc -b"
-}, 
+  },
   "private": true,
   "devDependencies": {
     "@types/bun": "latest"
@@ -19,8 +19,8 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@prisma/client": "^6.5.0",
-    "prisma": "^6.5.0"
+    "@prisma/client": "^6.10.1",
+    "prisma": "^6.10.1"
   },
   "prisma": {
     "seed": "seed.ts"

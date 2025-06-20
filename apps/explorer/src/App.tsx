@@ -2,20 +2,19 @@ import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import "@solana/wallet-adapter-react-ui/styles.css";
 import Header from "./components/Header";
+import Explorer from "./components/Explorer";
+
+const endpoint = "https://api.devnet.solana.com";
 
 function App() {
   return (
-    <ConnectionProvider endpoint="https://api.devnet.solana.com">
+    <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
-          <div className="min-h-screen flex flex-col">
+          <div className="bg-gray-900 text-white min-h-screen flex flex-col">
             <Header />
-
-            {/* Main content */}
-            <main className="flex-1 p-4">
-              <h2 className="text-3xl font-bold text-center mt-8">
-                Welcome to DecentralWatch Explorer
-              </h2>
+            <main className="flex-1">
+              <Explorer />
             </main>
           </div>
         </WalletModalProvider>
