@@ -17,7 +17,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://uptora.xyz",
   "https://decentralwatch.xyz",
-  "https://validator.decentralwatch.xyz",
+  "https://explorer.decentralwatch.xyz",
   "https://www.decentralwatch.xyz"
 ];
 

@@ -1,7 +1,7 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Wallet, CheckCircle, Download, MapPin, Server } from "lucide-react";
+import { Wallet, CheckCircle, Download, MapPin } from "lucide-react";
 
 const ELECTRON_GITHUB_URL =
   "https://github.com/Pratikkale26/DecentralWatch/releases/tag/v1.0.0";
