@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ChevronDown, ChevronUp, Power } from 'lucide-react';
+import { ChevronDown, ChevronUp, Power, AreaChart } from 'lucide-react';
 import { useAuth } from '@clerk/nextjs';
 import axios from 'axios';
 import { API_BACKEND_URL } from '@/config';
@@ -7,6 +7,8 @@ import { Website } from './types';
 import { StatusCircle } from './StatusCircle';
 import { UptimeGraph } from './UptimeGraph';
 import { aggregateTicksToWindows, calculateUptimePercentage, isValidURL } from './utils';
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { PageSpeedInsightsModal } from './PageSpeedInsightsModal';
 
 interface WebsiteCardProps {
   website: Website;
@@ -15,6 +17,7 @@ interface WebsiteCardProps {
 
 export function WebsiteCard({ website, onDelete }: WebsiteCardProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [insightOpen, setInsightOpen] = useState(false);
   const { getToken } = useAuth();
   
   const aggregatedUptime = useMemo(() => 
@@ -77,6 +80,23 @@ export function WebsiteCard({ website, onDelete }: WebsiteCardProps) {
           }`}>
             {uptimePercentage}% Uptime
           </span>
+          <Dialog open={insightOpen} onOpenChange={setInsightOpen}>
+            <DialogTrigger asChild>
+              <button
+                onClick={e => { e.stopPropagation(); setInsightOpen(true); }}
+                className="text-blue-500 hover:text-blue-600 cursor-pointer"
+                title="View PageSpeed Insights"
+              >
+                <AreaChart size={28} />
+              </button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle className='pt-2 pl-2'>PageSpeed Insights</DialogTitle>
+              </DialogHeader>
+              <PageSpeedInsightsModal url={website.url} />
+            </DialogContent>
+          </Dialog>
           <button 
             onClick={(e) => {
               e.stopPropagation();
